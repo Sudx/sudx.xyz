@@ -164,18 +164,20 @@ The SUDX project has migrated from Solana to **Polygon**. This decision was made
     *   ✅ Unit tests for the contract implemented and passed
     *   ✅ Deployment script (`deploy.ts`) created
     *   ✅ Contract deployed to the Polygon Testnet (Amoy)
-    *   ✅ **Contract deployed to the Polygon Mainnet**
-    *   ⏳ Whitepaper v1 launch (focused on Polygon)
-    *   ⏳ Creation and locking of the Liquidity Pool on a Polygon DEX (e.g., QuickSwap/Uniswap)
+    *   ✅ **Contract deployed to the Polygon Mainnet & Verified**
+    *   ✅ **Website Launched on sudx.xyz**
+    *   ✅ **Whitepaper v1 Launched**
+    *   ⏳ Creation and locking of the Liquidity Pool on QuickSwap (Target: $400 USDC)
 
 *   **Phase 2: Proof of Concept (Q4 2025 - Q1 2026)**
+    *   ✅ Launch Official DAO on Polygon Mainnet
+    *   ⏳ First Governance Proposals (Budget & Admin Transfer)
     *   ⏳ Listing on CoinGecko and CoinMarketCap
     *   ⏳ Launch of the first version of the donation platform
     *   ⏳ Pilot project with one or two partner open-source projects
     *   ⏳ Airdrop for contributors of selected projects begins
 
 *   **Phase 3: Governance and Expansion (2026)**
-    *   ⏳ Launch of the DAO for proposal voting
     *   ⏳ Development of the on-chain reputation system
     *   ⏳ Integration with GitHub (via Actions or Apps)
     *   ⏳ Expansion of the partnership program
