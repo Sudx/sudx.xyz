@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SUDX - Freedom in Code. Power in Community.</title>
+    <link rel="icon" type="image/png" href="assets/bitmap32-32.png" sizes="32x32">
+    <link rel="apple-touch-icon" href="assets/bitmap192-192.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #15002aff; /* Dark Purple */
+            --container-bg: #2a1a42; /* Lighter purple for cards */
+            --primary-color: #8a42f5; /* Vibrant purple (Nubank style) */
+            --highlight-color: #a06afc; /* Lighter purple for hover and highlights */
+            --text-color: #e6e0f5; /* White text with a slight purple tint */
+            --secondary-text-color: #bca8e0; /* Secondary text */
+            --border-color: #3e2a63;
+        }
+
+        body {
+            font-family: 'Inter', 'Fira Code', monospace;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.7;
+            font-size: 18px;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        section {
+            padding: 80px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        section:last-child {
+            border-bottom: none;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        header.container {
+            text-align: center;
+        }
+
+        h1 {
+            display: inline-block; /* Fica na mesma linha que o cursor */
+            font-size: 4.5rem;
+            font-weight: 700;
+            letter-spacing: -2px;
+            color: var(--primary-color);
+            text-shadow: 0 0 25px rgba(138, 66, 245, 0.2);
+            margin: 0;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 1rem;
+            height: 4.5rem;
+            background-color: var(--highlight-color);
+            animation: blink 1s step-end infinite;
+            vertical-align: middle;
+            margin-left: 0.5rem;
+        }
+
+        @keyframes blink {
+            from, to { background-color: transparent }
+            50% { background-color: var(--highlight-color); }
+        }
+
+        h2 {
+            font-size: 2.8rem;
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--primary-color);
+        }
+        
+        .slogan {
+            font-family: 'Fira Code', monospace;
+            font-size: 1.4rem;
+            text-align: center;
+            color: var(--secondary-text-color);
+            margin-bottom: 40px;
+        }
+        
+        .slogan::before {
+            content: '$ ';
+            color: var(--highlight-color);
+        }
+
+        .cta-buttons {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 35px;
+            background-color: var(--primary-color);
+            color: #fff;
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 12px;
+            margin: 10px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+            border: none;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-4px);
+            background-color: var(--highlight-color);
+            box-shadow: 0 8px 30px rgba(138, 66, 245, 0.5);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+        
+        .btn-secondary:hover {
+            background-color: var(--primary-color);
+            color: #fff;
+        }
+
+        .section-text {
+            font-size: 1.2rem;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            color: var(--text-color);
+        }
+        
+        .section-text strong {
+            color: var(--primary-color);
+        }
+        
+        code {
+            background-color: var(--bg-color);
+            padding: 3px 7px;
+            border-radius: 6px;
+            font-family: 'Fira Code', monospace;
+            color: var(--highlight-color);
+            border: 1px solid var(--border-color);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .feature-card {
+            background-color: var(--container-bg);
+            padding: 35px;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.4);
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-top: 0;
+        }
+        
+        .feature-card p {
+            color: var(--secondary-text-color);
+            font-size: 1rem;
+        }
+
+        .roadmap {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .roadmap-phase h3 {
+            font-size: 1.6rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border-color);
+        }
+        
+        .roadmap-item {
+            padding: 15px 0;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .roadmap-item span {
+            margin-right: 15px;
+            font-weight: bold;
+        }
+
+        .roadmap-item.completed {
+            color: var(--highlight-color);
+            text-decoration: line-through;
+        }
+
+        .roadmap-item.completed span {
+            color: #4caf50; /* Green check */
+        }
+
+        .roadmap-item:not(.completed) span {
+            color: var(--secondary-text-color);
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--secondary-text-color);
+            border-top: 1px solid var(--border-color);
+            margin-top: 80px;
+        }
+        
+        .footer-logo {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+        
+        .footer-links a {
+            color: var(--primary-color);
+            text-decoration: none;
+            margin: 0 15px;
+            transition: color 0.2s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--highlight-color);
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header class="container">
+        <h1>SUDX<span class="cursor"></span></h1>
+        <p class="slogan">Freedom in Code. Power in Community.</p>
+        <div class="cta-buttons">
+            <a href="SUDX_Whitepaper_v1.md" target="_blank" class="btn">Read the Whitepaper</a>
+            <a href="#community" class="btn btn-secondary">Join the Community</a>
+        </div>
+    </header>
+
+    <!-- Problem Section -->
+    <section id="problem" class="container">
+        <h2>The Code is Free, but its Developers Are Not.</h2>
+        <p class="section-text">
+            Free and open-source software runs the world. From the servers that power the internet to the <strong>Linux ecosystem</strong> that champions freedom, it's all built by a global community. However, its creators—the developers, maintainers, and designers—often rely on <strong>unstable donations</strong>, volunteer work, and fragmented funding.
+            <br><br>
+            Community gratitude exists, but it rarely converts into fair and sustainable financial support. <strong>SUDX</strong> was born to fix this, creating a direct and transparent bridge between the open-source ethos and the funding power of Web3.
+        </p>
+    </section>
+
+    <!-- Solution Section -->
+    <section id="about" class="container">
+        <h2>Turning Gratitude into Action.</h2>
+        <p class="section-text">
+            In the Linux terminal, <code>sudo</code> is the command that grants elevated privileges to execute critical tasks. It embodies trust, power, and responsibility. Our currency, <strong>SUDX</strong>, is born from this philosophy to become the native token of the open-source ecosystem. The <code>X</code> stands for extension, experimentation, and the future we will build together.
+        </p>
+        <div class="features-grid">
+            <div class="feature-card">
+                <h3>Direct & Transparent Donations</h3>
+                <p>Support your favorite projects and developers with fast, auditable transactions on the Polygon blockchain. Make <code>git push --force-donation</code> your new way of saying thanks.</p>
+            </div>
+            <div class="feature-card">
+                <h3>On-Chain Reputation</h3>
+                <p>Receive reputation tokens for your contributions. Build an immutable and valued on-chain resume, a true <code>git commit --author="SUDX"</code>.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Native Integration</h3>
+                <p>Our vision is to integrate SUDX directly into the tools developers live in: Git, CI/CD pipelines, code editors, and decentralized networks.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Governance Section -->
+    <section id="governance" class="container">
+        <h2>A Truly Autonomous DAO, Powered by Aragon.</h2>
+        <p class="section-text">
+            Our governance model is designed for maximum security and true decentralization, eliminating central points of failure. We achieve this through a robust architecture powered by <strong>Aragon</strong>.
+        </p>
+        <div class="features-grid">
+            <div class="feature-card">
+                <h3>Automated Execution</h3>
+                <p>When the community approves a proposal, the DAO's smart contracts execute it <strong>automatically</strong>. No manual intervention is needed from the team, ensuring the community's will is law.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Two-Layer Treasury</h3>
+                <p>For security, funds are split between a smaller <strong>Operational Treasury</strong> for daily use (managed by the DAO) and a large <strong>Strategic Treasury</strong> (in a Safe), which only refills the DAO's budget after a community vote.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Explore Our DAO</h3>
+                <p>Our governance is live on the Aragon platform. You can view our treasury, see active proposals, and participate in voting directly on the DAO dashboard.</p>
+                <a href="https://app.aragon.org/dao/polygon-mainnet/0xA5dEa0A7E9c47d52e735c1d4129Cc02a54966E21/dashboard" target="_blank" rel="noopener noreferrer" class="btn" style="margin-top: 15px;">Go to DAO Dashboard</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Donation Platform Section -->
+    <section id="donation" class="container">
+        <h2>Donation Platform: Coming Soon</h2>
+        <p class="section-text">
+            Our flagship donation platform is in the final stages of development. It will allow anyone to connect their wallet and support verified open-source projects with just a few clicks.
+            <br><br>
+            The platform will be launched shortly after the DAO is live on Mainnet and the initial governance framework is approved by the community.
+        </p>
+        <div class="cta-buttons">
+            <a href="dashboard.html" class="btn btn-secondary">View Dashboard (Preview)</a>
+        </div>
+    </section>
+
+    <!-- Roadmap Section -->
+    <section id="roadmap" class="container">
+        <h2>Our Path to Mainnet and Beyond</h2>
+        <div class="roadmap">
+            <div class="roadmap-phase">
+                <h3>Phase 1: Foundation & Launch</h3>
+                <div class="roadmap-item completed"><span>✓</span> Migration to Polygon & Technical Setup</div>
+                <div class="roadmap-item completed"><span>✓</span> SUDX Token Contract Deployed on Testnet</div>
+                <div class="roadmap-item completed"><span>✓</span> DAO Governance Model Tested & Validated</div>
+                <div class="roadmap-item completed"><span>✓</span> Contract Deployed on Mainnet & Verified</div>
+                <div class="roadmap-item completed"><span>✓</span> Website Launched</div>
+                <div class="roadmap-item completed"><span>✓</span> Launch Whitepaper v1</div>
+                <div class="roadmap-item"><span>●</span> Create & Lock Liquidity Pool on Mainnet</div>
+            </div>
+            <div class="roadmap-phase">
+                <h3>Phase 2: Governance & Growth</h3>
+                <div class="roadmap-item completed"><span>✓</span> Launch Official DAO on Polygon Mainnet</div>
+                <div class="roadmap-item"><span>●</span> First Governance Proposals (Budget & Admin Transfer)</div>
+                <div class="roadmap-item"><span>●</span> List on CoinGecko & CoinMarketCap</div>
+                <div class="roadmap-item"><span>●</span> Launch v1 of the Donation Platform</div>
+            </div>
+            <div class="roadmap-phase">
+                <h3>Phase 3: Ecosystem Expansion</h3>
+                <div class="roadmap-item"><span>●</span> Develop On-Chain Reputation System</div>
+                <div class="roadmap-item"><span>●</span> Pilot Program with Partner Open-Source Projects</div>
+                <div class="roadmap-item"><span>●</span> Begin Airdrop for Early Contributors</div>
+                <div class="roadmap-item"><span>●</span> GitHub & CI/CD Integration Research</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tokenomics Section -->
+    <section id="tokenomics" class="container">
+        <h2>Tokenomics: Fair and Transparent</h2>
+        <p class="section-text">
+            A clear and fair distribution is the foundation of trust. Our tokenomics are designed for long-term growth and to empower the community.
+            <br><strong>Total Supply: 2,800,000,000 SUDX</strong>
+        </p>
+        <div class="features-grid">
+            <div class="feature-card">
+                <h3>Ecosystem & Rewards</h3>
+                <p><strong>45% (1.26B SUDX)</strong><br>To fund open-source projects, reward contributors, and grow the ecosystem through community governance (DAO).</p>
+            </div>
+            <div class="feature-card">
+                <h3>Gradual Supply Release</h3>
+                <p>To ensure market stability, the total supply is not released at once. Major allocations like Team and Ecosystem funds are locked and vest over several years, ensuring a slow and predictable increase in circulating supply.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Liquidity Pool</h3>
+                <p><strong>~24.95% (~698.5M SUDX)</strong><br>This is the total budget for market liquidity. Only a small fraction will be used to create the initial SUDX/USDC pool, which will be locked. The rest will be added gradually via DAO governance to ensure long-term market stability.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Market Launch Strategy</h3>
+                <p><strong>Scenario A (Preferred): Initial Liquidity Pool.</strong> If sufficient capital is available at launch, a small initial SUDX/USDC liquidity pool will be created and locked to ensure a stable trading environment from day one.</p>
+                <p><strong>Scenario B (Contingency): Direct to Market.</strong> If sufficient capital for a pool is not available, the token will be launched directly. In this case, liquidity will be built organically by the community over time. This is a transparent approach to ensure the project can launch regardless of initial funding.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Team & Founders</h3>
+                <p><strong>15% (420M SUDX)</strong><br>To reward the founding team, subject to a long-term vesting schedule to ensure commitment.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Marketing & Partnerships</h3>
+                <p><strong>10% (280M SUDX)</strong><br>To drive adoption, form strategic partnerships, and increase the project's visibility.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Strategic Treasury</h3>
+                <p><strong>5% (140M SUDX)</strong><br>A reserve for future opportunities and expenses, governed by the DAO.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Trust & Safety</h3>
+                <p>To guarantee investor security, team tokens are vested over a 3-year period. The entire initial liquidity pool will be locked for a minimum of 6 months, preventing rug pulls and demonstrating our long-term commitment.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Liquidity Drive Section -->
+    <section id="liquidity-drive" class="container">
+        <h2>Help Build Our Initial Liquidity</h2>
+        <p class="section-text">
+            A strong liquidity pool is crucial for a stable and healthy market. The creation of our initial SUDX/USDC pool depends on community support. By donating, you can directly contribute to the long-term stability and success of the project from day one.
+            <br><br>
+            All donated funds will be used exclusively to create and lock the initial liquidity pool on a decentralized exchange.
+        </p>
+        <div class="cta-buttons">
+            <a href="#" id="donateButton" class="btn">Donate to the Liquidity Fund</a>
+        </div>
+    </section>
+
+    <!-- Community Section -->
+    <section id="community" class="container">
+        <h2><code>sudo join community</code></h2>
+        <p class="section-text">
+            SUDX is built by the community, for the community. Connect with us, contribute ideas, and help shape the future of open source.
+        </p>
+        <div class="cta-buttons">
+            <a href="https://t.me/+aWeTCUiItxk4OWZh" target="_blank" rel="noopener noreferrer" class="btn">Join Telegram</a>
+            <a href="https://x.com/SudxOfficial" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Follow on X (Twitter)</a>
+            <a href="https://github.com/Sudx" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Explore on GitHub</a>
+            <a href="https://www.reddit.com/r/SudxLabs/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Join on Reddit</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <img src="assets/icon-final-monogram.svg" alt="SUDX Logo" class="footer-logo">
+            <div class="footer-links">
+                <a id="contractLink" href="https://polygonscan.com/token/0xc56F971934961267586e8283C06018167F0D0E4C" target="_blank" rel="noopener noreferrer">Contract</a>
+                <a href="https://app.uncx.network/lockers/token/chain/137/address/0xc56f971934961267586e8283c06018167f0d0e4c" target="_blank" rel="noopener noreferrer">Team Vesting</a>
+                <a href="mailto:sudx.oficial@gmail.com">Contact</a>
+            </div>
+            <p class="contract-address" id="contractAddress">
+                Mainnet Contract: 0xc56F971934961267586e8283C06018167F0D0E4C
+            </p>
+            <p class="copyright">&copy; 2025 SUDX. All Rights Reserved. The SUDX project, including its code and documentation, is licensed under the MIT License. Made with ❤️ and open-source code.</p>
+        </div>
+    </footer>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/5.7.2/ethers.umd.min.js"></script>
+    <script src="app.js"></script>
+
+</body>
+</html>
