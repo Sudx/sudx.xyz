@@ -79,23 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- DASHBOARD PREVIEW LOGIC ---
-    // This logic seems to replace the dashboard content. If you want the dashboard to be functional,
-    // this part should be removed or updated. For now, I will leave it as is.
-    if (window.location.pathname.includes('dashboard.html')) {
-        const body = document.querySelector('body');
-        if (body) {
-            body.innerHTML = `
-                <div style="text-align: center; padding: 100px; font-family: 'Inter', sans-serif; color: #e6e0f5;">
-                    <h1 style="color: #8a42f5; font-size: 2.5rem;">Dashboard Coming Soon</h1>
-                    <p style="font-size: 1.2rem; line-height: 1.7;">
-                        The on-chain statistics dashboard will be activated once the initial liquidity pool is created.
-                    </p>
-                    <a href="/" class="btn" style="display: inline-block; margin-top: 30px; padding: 15px 35px; background-color: #8a42f5; color: #fff; text-decoration: none; font-weight: 700; border-radius: 12px;">Return to Homepage</a>
-                </div>
-            `;
-        }
-    }
+    // This space is intentionally left blank.
 });
 
 // Ethers.js needs to be loaded for parseUnits to work. Ensure the main HTML file includes it.
