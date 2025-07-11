@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <p style="font-size: 1.2rem; line-height: 1.7;">
                         The on-chain statistics dashboard will be activated once the initial liquidity pool is created.
                     </p>
-                    <a href="index.html" class="btn" style="display: inline-block; margin-top: 30px; padding: 15px 35px; background-color: #8a42f5; color: #fff; text-decoration: none; font-weight: 700; border-radius: 12px;">Return to Homepage</a>
+                    <a href="/" class="btn" style="display: inline-block; margin-top: 30px; padding: 15px 35px; background-color: #8a42f5; color: #fff; text-decoration: none; font-weight: 700; border-radius: 12px;">Return to Homepage</a>
                 </div>
             `;
         }
@@ -101,3 +101,114 @@ document.addEventListener('DOMContentLoaded', () => {
 // Ethers.js needs to be loaded for parseUnits to work. Ensure the main HTML file includes it.
 // The index.html does not seem to include ethers.js, it needs to be added.
 // Let's add it to the footer of index.html
+
+const connectWallet = async () => {
+    if (typeof window.ethereum === 'undefined') {
+        alert('Please install MetaMask to use this feature.');
+        return null;
+    }
+
+    try {
+        const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+        const userAddress = accounts[0];
+        alert(`Wallet Connected: ${userAddress}`);
+        return userAddress;
+    } catch (error) {
+        console.error('Failed to connect wallet:', error);
+        if (error.code === 4001) {
+            alert('Connection request cancelled by user.');
+        } else {
+            alert(`An error occurred while connecting: ${error.message}`);
+        }
+        return null;
+    }
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+    const connectWalletBtn = document.getElementById('connectWalletBtn');
+    if (connectWalletBtn) {
+        connectWalletBtn.addEventListener('click', (event) => {
+            event.preventDefault();
+            connectWallet();
+        });
+    }
+
+    // --- TOKENOMICS CHART LOGIC ---
+    const tokenomicsSection = document.getElementById('tokenomics');
+    if (tokenomicsSection) {
+        const ctx = document.getElementById('tokenomicsChart').getContext('2d');
+        
+        const data = {
+            labels: [
+                'Ecosystem & Rewards', 
+                'Liquidity Pool', 
+                'Team & Founders', 
+                'Marketing & Partnerships', 
+                'Strategic Treasury'
+            ],
+            datasets: [{
+                data: [45, 24.95, 15, 10, 5],
+                backgroundColor: [
+                    '#9e00ff', // Electric Purple
+                    '#00f6ff', // Neon Cyan
+                    '#ff00e6', // Neon Magenta
+                    '#6a00ff', // Darker Purple
+                    '#d100ff'  // Lighter Magenta
+                ],
+                borderColor: '#0d021a', // Background color for separation
+                borderWidth: 3,
+                hoverOffset: 10
+            }]
+        };
+
+        const options = {
+            responsive: true,
+            maintainAspectRatio: false,
+            cutout: '70%',
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    labels: {
+                        color: '#e6e0f5', // Text color
+                        font: {
+                            family: "'Inter', sans-serif",
+                            size: 14
+                        },
+                        padding: 20
+                    }
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            let label = context.label || '';
+                            if (label) {
+                                label += ': ';
+                            }
+                            if (context.parsed !== null) {
+                                label += context.parsed + '%';
+                            }
+                            return label;
+                        }
+                    },
+                    titleFont: {
+                        size: 16,
+                        family: "'Inter', sans-serif"
+                    },
+                    bodyFont: {
+                        size: 14,
+                        family: "'Inter', sans-serif"
+                    },
+                    backgroundColor: 'rgba(13, 2, 26, 0.9)',
+                    titleColor: '#00f6ff',
+                    bodyColor: '#e6e0f5'
+                }
+            }
+        };
+
+        new Chart(ctx, {
+            type: 'doughnut',
+            data: data,
+            options: options
+        });
+    }
+});

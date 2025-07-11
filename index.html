@@ -9,255 +9,22 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-color: #15002aff; /* Dark Purple */
-            --container-bg: #2a1a42; /* Lighter purple for cards */
-            --primary-color: #8a42f5; /* Vibrant purple (Nubank style) */
-            --highlight-color: #a06afc; /* Lighter purple for hover and highlights */
-            --text-color: #e6e0f5; /* White text with a slight purple tint */
-            --secondary-text-color: #bca8e0; /* Secondary text */
-            --border-color: #3e2a63;
-        }
-
-        body {
-            font-family: 'Inter', 'Fira Code', monospace;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            margin: 0;
-            padding: 0;
-            line-height: 1.7;
-            font-size: 18px;
-        }
-
-        .container {
-            max-width: 960px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-
-        section {
-            padding: 80px 0;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        section:last-child {
-            border-bottom: none;
-        }
-
-        h1, h2, h3 {
-            font-family: 'Inter', sans-serif;
-            font-weight: 700;
-            color: #fff;
-        }
-
-        header.container {
-            text-align: center;
-        }
-
-        h1 {
-            display: inline-block; /* Fica na mesma linha que o cursor */
-            font-size: 4.5rem;
-            font-weight: 700;
-            letter-spacing: -2px;
-            color: var(--primary-color);
-            text-shadow: 0 0 25px rgba(138, 66, 245, 0.2);
-            margin: 0;
-        }
-
-        .cursor {
-            display: inline-block;
-            width: 1rem;
-            height: 4.5rem;
-            background-color: var(--highlight-color);
-            animation: blink 1s step-end infinite;
-            vertical-align: middle;
-            margin-left: 0.5rem;
-        }
-
-        @keyframes blink {
-            from, to { background-color: transparent }
-            50% { background-color: var(--highlight-color); }
-        }
-
-        h2 {
-            font-size: 2.8rem;
-            text-align: center;
-            margin-bottom: 50px;
-            color: var(--primary-color);
-        }
-        
-        .slogan {
-            font-family: 'Fira Code', monospace;
-            font-size: 1.4rem;
-            text-align: center;
-            color: var(--secondary-text-color);
-            margin-bottom: 40px;
-        }
-        
-        .slogan::before {
-            content: '$ ';
-            color: var(--highlight-color);
-        }
-
-        .cta-buttons {
-            text-align: center;
-            margin-top: 40px;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 15px 35px;
-            background-color: var(--primary-color);
-            color: #fff;
-            text-decoration: none;
-            font-weight: 700;
-            border-radius: 12px;
-            margin: 10px;
-            transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
-            border: none;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        .btn:hover {
-            transform: translateY(-4px);
-            background-color: var(--highlight-color);
-            box-shadow: 0 8px 30px rgba(138, 66, 245, 0.5);
-        }
-        
-        .btn-secondary {
-            background-color: transparent;
-            color: var(--primary-color);
-            border: 2px solid var(--primary-color);
-        }
-        
-        .btn-secondary:hover {
-            background-color: var(--primary-color);
-            color: #fff;
-        }
-
-        .section-text {
-            font-size: 1.2rem;
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-            color: var(--text-color);
-        }
-        
-        .section-text strong {
-            color: var(--primary-color);
-        }
-        
-        code {
-            background-color: var(--bg-color);
-            padding: 3px 7px;
-            border-radius: 6px;
-            font-family: 'Fira Code', monospace;
-            color: var(--highlight-color);
-            border: 1px solid var(--border-color);
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 60px;
-        }
-
-        .feature-card {
-            background-color: var(--container-bg);
-            padding: 35px;
-            border-radius: 16px;
-            border: 1px solid var(--border-color);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.4);
-        }
-
-        .feature-card h3 {
-            font-size: 1.5rem;
-            color: var(--primary-color);
-            margin-top: 0;
-        }
-        
-        .feature-card p {
-            color: var(--secondary-text-color);
-            font-size: 1rem;
-        }
-
-        .roadmap {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 40px;
-            margin-top: 60px;
-        }
-
-        .roadmap-phase h3 {
-            font-size: 1.6rem;
-            color: var(--primary-color);
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid var(--border-color);
-        }
-        
-        .roadmap-item {
-            padding: 15px 0;
-            font-size: 1.1rem;
-            display: flex;
-            align-items: center;
-        }
-        
-        .roadmap-item span {
-            margin-right: 15px;
-            font-weight: bold;
-        }
-
-        .roadmap-item.completed {
-            color: var(--highlight-color);
-            text-decoration: line-through;
-        }
-
-        .roadmap-item.completed span {
-            color: #4caf50; /* Green check */
-        }
-
-        .roadmap-item:not(.completed) span {
-            color: var(--secondary-text-color);
-        }
-
-        footer {
-            text-align: center;
-            padding: 40px 20px;
-            color: var(--secondary-text-color);
-            border-top: 1px solid var(--border-color);
-            margin-top: 80px;
-        }
-        
-        .footer-logo {
-            width: 50px;
-            height: 50px;
-            margin-bottom: 20px;
-            opacity: 0.8;
-        }
-        
-        .footer-links a {
-            color: var(--primary-color);
-            text-decoration: none;
-            margin: 0 15px;
-            transition: color 0.2s ease;
-        }
-        
-        .footer-links a:hover {
-            color: var(--highlight-color);
-        }
-
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
+    <nav class="main-nav">
+        <div class="nav-container">
+            <ul class="nav-links">
+                <li><a href="#problem">Problem</a></li>
+                <li><a href="#about">Solution</a></li>
+                <li><a href="#governance">DAO</a></li>
+                <li><a href="#tokenomics">Tokenomics</a></li>
+                <li><a href="#community">Community</a></li>
+            </ul>
+            <a href="#" id="connectWalletBtn" class="btn btn-nav">Connect Wallet</a>
+        </div>
+    </nav>
 
     <!-- Header Section -->
     <header class="container">
@@ -333,7 +100,7 @@
             The platform will be launched shortly after the DAO is live on Mainnet and the initial governance framework is approved by the community.
         </p>
         <div class="cta-buttons">
-            <a href="dashboard.html" class="btn btn-secondary">View Dashboard (Preview)</a>
+            <a href="/dashboard" class="btn btn-secondary">View Dashboard (Preview)</a>
         </div>
     </section>
 
@@ -375,6 +142,9 @@
             A clear and fair distribution is the foundation of trust. Our tokenomics are designed for long-term growth and to empower the community.
             <br><strong>Total Supply: 2,800,000,000 SUDX</strong>
         </p>
+        <div class="tokenomics-chart-container">
+            <canvas id="tokenomicsChart"></canvas>
+        </div>
         <div class="features-grid">
             <div class="feature-card">
                 <h3>Ecosystem & Rewards</h3>
@@ -451,11 +221,12 @@
             <p class="contract-address" id="contractAddress">
                 Mainnet Contract: 0xc56F971934961267586e8283C06018167F0D0E4C
             </p>
-            <p class="copyright">&copy; 2025 SUDX. All Rights Reserved. The SUDX project, including its code and documentation, is licensed under the MIT License. Made with ❤️ and open-source code.</p>
+            <p class="copyright">&copy; 2025 SUDX. Licensed under the MIT License.</p>
         </div>
     </footer>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/5.7.2/ethers.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="app.js"></script>
 
 </body>

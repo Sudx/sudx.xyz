@@ -9,118 +9,76 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css"> <!-- We will create this file -->
-    <style>
-        /* Basic styles for layout - can be moved to styles.css */
-        body {
-            font-family: 'Inter', 'Fira Code', monospace;
-            background-color: #15002aff;
-            color: #e6e0f5;
-            margin: 0;
-            padding: 20px;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #3e2a63;
-        }
-        header h1 {
-            font-size: 2.5rem;
-            color: #8a42f5;
-        }
-        .btn {
-            display: inline-block;
-            padding: 10px 25px;
-            background-color: #8a42f5;
-            color: #fff;
-            text-decoration: none;
-            font-weight: 700;
-            border-radius: 12px;
-            transition: background-color 0.2s ease;
-        }
-        .btn:hover {
-            background-color: #a06afc;
-        }
-        .dashboard-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-top: 40px;
-        }
-        .stat-card {
-            background-color: #2a1a42;
-            padding: 25px;
-            border-radius: 16px;
-            border: 1px solid #3e2a63;
-        }
-        .stat-card h3 {
-            font-size: 1.2rem;
-            color: #bca8e0;
-            margin-top: 0;
-            margin-bottom: 15px;
-        }
-        .stat-card .value {
-            font-size: 2.2rem;
-            font-weight: 700;
-            color: #fff;
-        }
-        .loading-spinner {
-            border: 4px solid rgba(255, 255, 255, 0.2);
-            border-left-color: #a06afc;
-            border-radius: 50%;
-            width: 24px;
-            height: 24px;
-            animation: spin 1s linear infinite;
-        }
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <nav class="main-nav">
+        <div class="nav-container">
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/whitepaper.html">Whitepaper</a></li>
+            </ul>
+            <a href="#" id="connectWalletBtn" class="btn btn-nav">Connect Wallet</a>
+        </div>
+    </nav>
     <div class="container">
-        <header>
-            <h1>SUDX Dashboard</h1>
-            <a href="index.html" class="btn">Back to Home</a>
+        <header class="dashboard-header">
+            <h1>SUDX On-Chain Dashboard</h1>
+            <div id="connection-status" class="status-disconnected">
+                <span></span>
+                <p>Connecting to Live Feed...</p>
+            </div>
         </header>
 
+        <!-- Main Stats Grid -->
         <div class="dashboard-grid">
-            <!-- Stat Card for Price -->
             <div class="stat-card">
                 <h3>SUDX Price</h3>
-                <div id="sudx-price" class="value">
-                    <div class="loading-spinner"></div>
-                </div>
+                <div id="sudx-price" class="value">N/A</div>
             </div>
-
-            <!-- Stat Card for Liquidity -->
             <div class="stat-card">
                 <h3>Total Liquidity</h3>
-                <div id="total-liquidity" class="value">
-                    <div class="loading-spinner"></div>
-                </div>
+                <div id="total-liquidity" class="value">N/A</div>
             </div>
-
-            <!-- Stat Card for Holders -->
+            <div class="stat-card">
+                <h3>Market Cap</h3>
+                <div id="market-cap" class="value">N/A</div>
+            </div>
             <div class="stat-card">
                 <h3>Total Holders</h3>
-                <div id="total-holders" class="value">
-                    <div class="loading-spinner"></div>
+                <div id="total-holders" class="value"><div class="loading-spinner"></div></div>
+            </div>
+        </div>
+
+        <!-- Monitored Pools & DEX Activity -->
+        <div class="data-section">
+            <div class="data-container" id="monitored-pools-container">
+                <h2>Monitored Liquidity Pools</h2>
+                <div class="list-container" id="pools-list">
+                    <!-- JS will populate this -->
+                    <p class="placeholder-text">No pools configured for monitoring.</p>
                 </div>
             </div>
+            <div class="data-container" id="dex-activity-container">
+                <h2>DEX Activity (24h Volume)</h2>
+                <div class="list-container" id="dex-list">
+                    <!-- JS will populate this -->
+                    <p class="placeholder-text">Awaiting pool activity...</p>
+                </div>
+            </div>
+        </div>
 
-            <!-- Stat Card for 24h Volume -->
-            <div class="stat-card">
-                <h3>24h Volume</h3>
-                <div id="volume-24h" class="value">
-                    <div class="loading-spinner"></div>
+        <!-- Live Transaction Feed -->
+        <div class="data-section">
+            <div class="data-container" id="transaction-feed-container">
+                <h2>Live Transaction Feed</h2>
+                <div class="feed-header">
+                    <div class="col-from">From</div>
+                    <div class="col-to">To</div>
+                    <div class="col-value">Value</div>
+                </div>
+                <div class="feed-list" id="transaction-feed">
+                    <!-- JS will populate this -->
                 </div>
             </div>
         </div>
