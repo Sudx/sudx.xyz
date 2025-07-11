@@ -403,3 +403,126 @@ footer {
         display: none; /* Esconde os cantos decorativos em mobile */
     }
 }
+
+/* =============================================== */
+/* Estilos para o Novo Dashboard de Analytics      */
+/* =============================================== */
+
+/* Grid para as Estatísticas Principais */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+    margin-bottom: 50px;
+}
+
+.stat-card {
+    background-color: rgba(21, 0, 42, 0.8);
+    border: 1px solid var(--primary-glow-color);
+    padding: 25px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 15px var(--primary-glow-color);
+}
+
+.stat-card h3 {
+    font-size: 1.2rem;
+    color: var(--text-color-darker);
+    margin-top: 0;
+    margin-bottom: 10px;
+    text-shadow: none;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+.stat-card p {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--secondary-glow-color);
+    margin: 0;
+    text-shadow: var(--secondary-glow);
+    line-height: 1.2;
+}
+
+/* Estilos para as Tabelas de Dados */
+.table-container {
+    width: 100%;
+    overflow-x: auto; /* Permite scroll horizontal em telas pequenas */
+    border: 1px solid var(--primary-glow-color);
+    background-color: rgba(21, 0, 42, 0.8);
+    padding: 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px; /* Garante que a tabela tenha uma largura mínima */
+}
+
+thead {
+    border-bottom: 2px solid var(--primary-glow-color);
+}
+
+th {
+    font-family: 'Orbitron', sans-serif;
+    padding: 15px;
+    text-align: left;
+    color: var(--primary-glow-color);
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+tbody tr {
+    border-bottom: 1px solid rgba(160, 32, 240, 0.2);
+    transition: background-color 0.3s ease;
+}
+
+tbody tr:last-child {
+    border-bottom: none;
+}
+
+tbody tr:hover {
+    background-color: rgba(160, 32, 240, 0.15);
+}
+
+td {
+    padding: 15px;
+    font-family: 'Share Tech Mono', monospace;
+    color: var(--text-color);
+    vertical-align: middle;
+}
+
+td .buy {
+    color: #00FF00; /* Verde para compras */
+    text-shadow: 0 0 5px #00FF00;
+}
+
+td .sell {
+    color: #FF0000; /* Vermelho para vendas */
+    text-shadow: 0 0 5px #FF0000;
+}
+
+/* Links dentro da tabela */
+td a {
+    color: var(--secondary-glow-color);
+    text-decoration: none;
+    transition: text-shadow 0.2s ease;
+}
+
+td a:hover {
+    text-shadow: var(--secondary-glow);
+}
+
+/* Mensagem de carregamento/vazio na tabela */
+.table-loading-row td {
+    text-align: center;
+    padding: 40px;
+    color: var(--text-color-darker);
+    font-style: italic;
+}

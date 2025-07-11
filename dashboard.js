@@ -1,133 +1,234 @@
-document.addEventListener('DOMContentLoaded', async () => {
-    // --- CONFIGURATION ---
-    const config = {
-        SUDX_TOKEN_ADDRESS: '0xc56F971934961267586e8283C06018167F0D0E4C',
-        POLYGONSCAN_API_KEY: 'GF6AW9NRDHK52444KQ987DI8ZGPJPWJ1JS',
-        RPC_URL: 'https://polygon-rpc.com/',
-        WEBSOCKET_URL: 'wss://polygon-mainnet.g.alchemy.com/v2/mGB_x3972_p1au41i8s1AdG91T5nJvjF', // Using a public Alchemy WS
-        // Add your LP addresses here as they are created
-        MONITORED_POOLS: [
-            // Example: { name: 'SUDX/USDC on QuickSwap', address: '0x...', dex: 'QuickSwap' }
-        ],
-        // Common DEX Routers on Polygon
-        MONITORED_DEXS: {
-            'QuickSwap': '0xa5E0829CaCEd8fFDD4De3c43696c57F7D7A678ff',
-            'SushiSwap': '0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506'
-        }
+// Aguarda o carregamento completo do DOM antes de executar o script
+document.addEventListener('DOMContentLoaded', () => {
+
+    // --- CONFIGURAÇÃO ---
+    // Endereço do token SUDX na rede Polygon. 
+    // Este é o único dado que precisamos para encontrar todos os seus pares.
+    const SUDX_TOKEN_ADDRESS = '0xc56F971934961267586e8283C06018167F0D0E4C'; // Endereço de exemplo, substitua pelo real
+    const CHAIN_NAME = 'polygon'; // ou 'bsc', 'ethereum', etc.
+
+    // --- ELEMENTOS DO DOM ---
+    const marketPriceElem = document.getElementById('market-price');
+    const marketLiquidityElem = document.getElementById('market-liquidity');
+    const marketVolumeElem = document.getElementById('market-volume');
+    const marketCapElem = document.getElementById('market-cap');
+    const poolsTableBody = document.getElementById('pools-table-body');
+    const swapsTableBody = document.getElementById('swaps-table-body');
+
+    // --- FUNÇÕES AUXILIARES ---
+
+    /**
+     * Formata um número como uma string de moeda em USD.
+     * @param {number} value O número a ser formatado.
+     * @returns {string} A string formatada (ex: $1,234.56).
+     */
+    const formatCurrency = (value) => {
+        if (typeof value !== 'number') return '$0.00';
+        return value.toLocaleString('en-US', {
+            style: 'currency',
+            currency: 'USD',
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2,
+        });
+    };
+    
+    /**
+     * Formata um número grande com abreviações (K, M, B).
+     * @param {number} value O número a ser formatado.
+     * @returns {string} A string formatada (ex: $1.23M).
+     */
+    const formatCurrencyShort = (value) => {
+        if (typeof value !== 'number') return '$0';
+        if (value >= 1e9) return `$${(value / 1e9).toFixed(2)}B`;
+        if (value >= 1e6) return `$${(value / 1e6).toFixed(2)}M`;
+        if (value >= 1e3) return `$${(value / 1e3).toFixed(2)}K`;
+        return formatCurrency(value);
     };
 
-    // --- DOM Elements ---
-    const priceElement = document.getElementById('sudx-price');
-    const liquidityElement = document.getElementById('total-liquidity');
-    const marketCapElement = document.getElementById('market-cap');
-    const holdersElement = document.getElementById('total-holders');
-    const transactionFeed = document.getElementById('transaction-feed');
-    const connectionStatus = document.getElementById('connection-status');
-
-    // --- ABIs ---
-    const ERC20_ABI = [
-        "function name() view returns (string)",
-        "function symbol() view returns (string)",
-        "function decimals() view returns (uint8)",
-        "function totalSupply() view returns (uint256)",
-        "function balanceOf(address account) view returns (uint256)",
-        "event Transfer(address indexed from, address indexed to, uint256 value)"
-    ];
-
-    // --- Helper Functions ---
-    const formatAddress = (address) => `${address.slice(0, 6)}...${address.slice(-4)}`;
-    const formatNumber = (num, options = {}) => new Intl.NumberFormat('en-US', options).format(num);
-
-    // --- Main Logic ---
-
-    // 1. Fetch Total Holders
-    async function fetchHolders() {
-        try {
-            const url = `https://api.polygonscan.com/api?module=token&action=tokenholderlist&contractaddress=${config.SUDX_TOKEN_ADDRESS}&apikey=${config.POLYGONSCAN_API_KEY}`;
-            const response = await fetch(url);
-            const data = await response.json();
-            if (data.status === "1") {
-                // PolygonScan API for token holder list is sometimes just an estimate.
-                // A more accurate way is to get holder count, but that's a pro feature.
-                // For now, we can count the returned holders, but it might be capped at 1000.
-                // A better proxy is to use the 'tokeninfo' action if available or just show the count from the list.
-                const holderCountUrl = `https://api.polygonscan.com/api?module=token&action=tokeninfo&contractaddress=${config.SUDX_TOKEN_ADDRESS}&apikey=${config.POLYGONSCAN_API_KEY}`;
-                const countResponse = await fetch(holderCountUrl);
-                const countData = await countResponse.json();
-                
-                // The tokeninfo endpoint is not standard. Let's parse the holder list page as a fallback.
-                // This is complex. The most reliable free method is counting the list.
-                if (data.result && data.result.length > 0) {
-                    holdersElement.textContent = formatNumber(data.result.length);
-                     if (data.result.length >= 1000) {
-                        holdersElement.textContent += "+"; // Indicate the list is likely capped
-                    }
-                } else {
-                     holdersElement.textContent = 'N/A';
-                }
-            } else {
-                holdersElement.textContent = 'N/A';
-                console.error("Failed to fetch holders:", data.message);
-            }
-        } catch (error) {
-            holdersElement.textContent = 'Error';
-            console.error("Error fetching holders:", error);
-        }
-    }
-
-
-    // 2. Setup Live Transaction Feed
-    function setupWebSocketListener() {
-        try {
-            const provider = new ethers.providers.WebSocketProvider(config.WEBSOCKET_URL);
-            const sudxContract = new ethers.Contract(config.SUDX_TOKEN_ADDRESS, ERC20_ABI, provider);
-
-            provider._websocket.onopen = () => {
-                connectionStatus.className = 'status-connected';
-                connectionStatus.querySelector('p').textContent = 'Live Feed Connected';
-            };
-
-            provider._websocket.onerror = (err) => {
-                console.error("WebSocket Error:", err);
-                connectionStatus.className = 'status-disconnected';
-                connectionStatus.querySelector('p').textContent = 'Feed Disconnected';
-            };
-            
-            provider._websocket.onclose = () => {
-                connectionStatus.className = 'status-disconnected';
-                connectionStatus.querySelector('p').textContent = 'Feed Disconnected';
-                // Optional: try to reconnect
-            };
-
-            sudxContract.on("Transfer", (from, to, value, event) => {
-                const decimals = 18; // Assuming 18 decimals for SUDX
-                const formattedValue = ethers.utils.formatUnits(value, decimals);
-
-                const item = document.createElement('div');
-                item.className = 'feed-item';
-                item.innerHTML = `
-                    <div class="col-from address" title="${from}">${formatAddress(from)}</div>
-                    <div class="col-to address" title="${to}">${formatAddress(to)}</div>
-                    <div class="col-value value">${formatNumber(formattedValue, { maximumFractionDigits: 2 })} SUDX</div>
-                `;
-
-                transactionFeed.prepend(item);
-
-                // Keep the list from getting too long
-                if (transactionFeed.children.length > 50) {
-                    transactionFeed.lastChild.remove();
-                }
+    /**
+     * Formata o preço, mostrando mais casas decimais para valores pequenos.
+     * @param {number} value O preço a ser formatado.
+     * @returns {string} A string de preço formatada.
+     */
+    const formatPrice = (value) => {
+        if (typeof value !== 'number') return '$0.00';
+        if (value < 0.01) {
+             return value.toLocaleString('en-US', {
+                style: 'currency',
+                currency: 'USD',
+                minimumFractionDigits: 6,
             });
+        }
+        return formatCurrency(value);
+    };
+
+    // --- LÓGICA PRINCIPAL ---
+
+    /**
+     * Busca os dados da API do DEX Screener e atualiza o dashboard.
+     */
+    async function fetchMarketData() {
+        const apiUrl = `https://api.dexscreener.com/latest/dex/tokens/${SUDX_TOKEN_ADDRESS}`;
+
+        try {
+            const response = await fetch(apiUrl);
+            if (!response.ok) {
+                throw new Error(`Erro na API: ${response.statusText}`);
+            }
+            const data = await response.json();
+            
+            if (!data.pairs || data.pairs.length === 0) {
+                console.warn('Nenhum par encontrado para o token SUDX.');
+                displayNoData();
+                return;
+            }
+
+            // Filtra pares que podem não ter dados completos
+            const validPairs = data.pairs.filter(p => p.liquidity && p.priceUsd);
+
+            // Processa e exibe os dados
+            processAndDisplayOverview(validPairs);
+            displayPoolsTable(validPairs);
+            fetchAndDisplaySwaps(validPairs);
 
         } catch (error) {
-            console.error("Could not set up WebSocket:", error);
-            connectionStatus.className = 'status-disconnected';
-            connectionStatus.querySelector('p').textContent = 'Connection Failed';
+            console.error("Falha ao buscar dados do mercado:", error);
+            displayError();
         }
     }
 
-    // --- Initial Load ---
-    fetchHolders();
-    setupWebSocketListener();
-    // Price/liquidity logic will be called here once a pool is configured.
+    /**
+     * Calcula e exibe a visão geral do mercado (agregado).
+     * @param {Array} pairs A lista de pares da API.
+     */
+    function processAndDisplayOverview(pairs) {
+        const totalLiquidity = pairs.reduce((sum, pair) => sum + pair.liquidity.usd, 0);
+        const totalVolume24h = pairs.reduce((sum, pair) => sum + pair.volume.h24, 0);
+        
+        // Usa o FDV (Fully Diluted Valuation) do par mais líquido como uma aproximação do Market Cap
+        const primaryPair = pairs.sort((a, b) => b.liquidity.usd - a.liquidity.usd)[0];
+        const marketCap = primaryPair.fdv; 
+        const price = parseFloat(primaryPair.priceUsd);
+
+        marketPriceElem.textContent = formatPrice(price);
+        marketLiquidityElem.textContent = formatCurrencyShort(totalLiquidity);
+        marketVolumeElem.textContent = formatCurrencyShort(totalVolume24h);
+        marketCapElem.textContent = formatCurrencyShort(marketCap);
+    }
+
+    /**
+     * Exibe a tabela de pools de liquidez ativos.
+     * @param {Array} pairs A lista de pares da API.
+     */
+    function displayPoolsTable(pairs) {
+        poolsTableBody.innerHTML = ''; // Limpa a tabela
+
+        if (pairs.length === 0) {
+            poolsTableBody.innerHTML = '<tr><td colspan="5" style="text-align: center;">Nenhum pool ativo encontrado.</td></tr>';
+            return;
+        }
+
+        // Ordena por liquidez (maior primeiro)
+        const sortedPairs = pairs.sort((a, b) => b.liquidity.usd - a.liquidity.usd);
+
+        sortedPairs.forEach(pair => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>
+                    <a href="${pair.url}" target="_blank" rel="noopener noreferrer">
+                        ${pair.baseToken.symbol}/${pair.quoteToken.symbol}
+                    </a>
+                </td>
+                <td>${pair.dexId}</td>
+                <td>${formatCurrencyShort(pair.liquidity.usd)}</td>
+                <td>${formatCurrencyShort(pair.volume.h24)}</td>
+                <td>${formatPrice(parseFloat(pair.priceUsd))}</td>
+            `;
+            poolsTableBody.appendChild(row);
+        });
+    }
+    
+    /**
+     * Busca e exibe os swaps mais recentes dos principais pools.
+     * @param {Array} pairs A lista de pares da API.
+     */
+    async function fetchAndDisplaySwaps(pairs) {
+        swapsTableBody.innerHTML = ''; // Limpa a tabela
+        
+        // Pega os 3 pares mais líquidos para buscar swaps
+        const topPairs = pairs.slice(0, 3);
+        let allSwaps = [];
+
+        for (const pair of topPairs) {
+            try {
+                const swapsUrl = `https://api.dexscreener.com/latest/dex/pairs/${pair.chainId}/${pair.pairAddress}`;
+                const response = await fetch(swapsUrl);
+                const data = await response.json();
+                if (data.pair && data.pair.txns) {
+                    // Adiciona informações do par a cada transação
+                    const swaps = data.pair.txns.map(txn => ({...txn, pair: data.pair }));
+                    allSwaps.push(...swaps);
+                }
+            } catch (error) {
+                console.warn(`Não foi possível buscar swaps para o par ${pair.pairAddress}:`, error);
+            }
+        }
+
+        if (allSwaps.length === 0) {
+            swapsTableBody.innerHTML = '<tr><td colspan="5" style="text-align: center;">Nenhum swap recente encontrado.</td></tr>';
+            return;
+        }
+
+        // Ordena todos os swaps por data (mais recente primeiro) e pega os 20 mais recentes
+        const recentSwaps = allSwaps.sort((a, b) => b.timestamp - a.timestamp).slice(0, 20);
+
+        recentSwaps.forEach(swap => {
+            const isBuy = swap.type === 'buy';
+            const tokenSymbol = swap.pair.baseToken.symbol;
+            const amountToken = parseFloat(swap.amount0 > swap.amount1 ? swap.amount0 : swap.amount1).toFixed(2);
+            
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td class="${isBuy ? 'buy' : 'sell'}">${isBuy ? 'COMPRA' : 'VENDA'}</td>
+                <td>${formatCurrency(swap.amountUsd)}</td>
+                <td>${amountToken} ${tokenSymbol}</td>
+                <td>${swap.pair.dexId}</td>
+                <td>${new Date(swap.timestamp).toLocaleTimeString()}</td>
+            `;
+            swapsTableBody.appendChild(row);
+        });
+    }
+
+    /**
+     * Exibe uma mensagem de erro no dashboard.
+     */
+    function displayError() {
+        const errorMsg = "Erro ao carregar dados";
+        marketPriceElem.textContent = errorMsg;
+        marketLiquidityElem.textContent = errorMsg;
+        marketVolumeElem.textContent = errorMsg;
+        marketCapElem.textContent = errorMsg;
+        poolsTableBody.innerHTML = `<tr><td colspan="5" style="text-align: center;">${errorMsg}. Tente recarregar a página.</td></tr>`;
+        swapsTableBody.innerHTML = `<tr><td colspan="5" style="text-align: center;">${errorMsg}.</td></tr>`;
+    }
+    
+    /**
+     * Exibe mensagem quando nenhum dado é encontrado.
+     */
+    function displayNoData() {
+        const noDataMsg = "N/A";
+        marketPriceElem.textContent = noDataMsg;
+        marketLiquidityElem.textContent = noDataMsg;
+        marketVolumeElem.textContent = noDataMsg;
+        marketCapElem.textContent = noDataMsg;
+        poolsTableBody.innerHTML = `<tr><td colspan="5" style="text-align: center;">Nenhum pool de liquidez encontrado para este token.</td></tr>`;
+        swapsTableBody.innerHTML = `<tr><td colspan="5" style="text-align: center;">Nenhum swap encontrado.</td></tr>`;
+    }
+
+
+    // --- INICIALIZAÇÃO ---
+    fetchMarketData();
+    
+    // Opcional: Atualiza os dados a cada 60 segundos
+    setInterval(fetchMarketData, 60000);
 });
