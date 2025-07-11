@@ -6,10 +6,32 @@
     <title>SUDX - Whitepaper</title>
     <link rel="icon" type="image/png" href="assets/bitmap32-32.png" sizes="32x32">
     <link rel="apple-touch-icon" href="assets/bitmap192-192.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <!-- As fontes agora são importadas diretamente no CSS -->
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Estilos específicos para o conteúdo do whitepaper */
+        #whitepaper-content {
+            text-align: left;
+        }
+        #whitepaper-content h1, #whitepaper-content h2, #whitepaper-content h3 {
+            text-align: left;
+            border-bottom: 1px solid var(--primary-glow-color);
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+        #whitepaper-content a {
+            color: var(--secondary-glow-color);
+        }
+        #whitepaper-content code {
+            font-size: 0.9rem;
+        }
+        #whitepaper-content pre {
+            background-color: #000;
+            border: 1px solid var(--primary-glow-color);
+            padding: 15px;
+            overflow-x: auto;
+        }
+    </style>
 </head>
 <body>
 
@@ -18,30 +40,36 @@
             <ul class="nav-links">
                 <li><a href="/">Home</a></li>
             </ul>
-            <a href="#" id="connectWalletBtn" class="btn btn-nav">Connect Wallet</a>
         </div>
     </nav>
 
     <div class="container">
-        <div style="text-align: center; margin-bottom: 40px;">
-            <a href="/" class="btn">Back to Home</a>
-        </div>
-        <div id="whitepaper-content">
-            <p>Loading Whitepaper...</p>
-        </div>
+        <header class="container" style="text-align: center; padding-bottom: 40px;">
+            <h1>SUDX Whitepaper v1</h1>
+            <div class="cta-buttons">
+                <a href="/" class="btn btn-secondary">Back to Home</a>
+            </div>
+        </header>
+
+        <section id="whitepaper-container">
+            <div class="panel">
+                <div id="whitepaper-content">
+                    <p>Loading Whitepaper...</p>
+                </div>
+            </div>
+        </section>
     </div>
 
+    <!-- Footer -->
     <footer>
         <div class="container">
             <img src="assets/icon-final-monogram.svg" alt="SUDX Logo" class="footer-logo">
             <div class="footer-links">
                 <a id="contractLink" href="https://polygonscan.com/token/0xc56F971934961267586e8283C06018167F0D0E4C" target="_blank" rel="noopener noreferrer">Contract</a>
                 <a href="https://app.uncx.network/lockers/token/chain/137/address/0xc56f971934961267586e8283c06018167f0d0e4c" target="_blank" rel="noopener noreferrer">Team Vesting</a>
+                <a href="https://app.uncx.network/lockers/univ2/chain/137/address/0x884c355bdd0332abbbf3bf7ca3f68029ae500030" target="_blank" rel="noopener noreferrer">Liquidity Locked</a>
                 <a href="mailto:sudx.oficial@gmail.com">Contact</a>
             </div>
-            <p class="contract-address" id="contractAddress">
-                Mainnet Contract: 0xc56F971934961267586e8283C06018167F0D0E4C
-            </p>
             <p class="copyright">&copy; 2025 SUDX. Licensed under the MIT License.</p>
         </div>
     </footer>

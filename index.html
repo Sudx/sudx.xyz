@@ -6,9 +6,7 @@
     <title>SUDX - Freedom in Code. Power in Community.</title>
     <link rel="icon" type="image/png" href="assets/bitmap32-32.png" sizes="32x32">
     <link rel="apple-touch-icon" href="assets/bitmap192-192.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <!-- As fontes agora são importadas diretamente no CSS -->
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -31,198 +29,177 @@
         <h1>SUDX<span class="cursor"></span></h1>
         <p class="slogan">Freedom in Code. Power in Community.</p>
         <div class="cta-buttons">
-            <a href="whitepaper.html" class="btn">Read the Whitepaper</a>
-            <a href="#community" class="btn btn-secondary">Join the Community</a>
+            <a href="whitepaper.html" class="btn">Read Whitepaper</a>
+            <a href="#community" class="btn btn-secondary">Join Community</a>
         </div>
     </header>
 
-    <!-- How to Buy Section -->
-    <section id="how-to-buy" class="container" style="padding-top: 60px; padding-bottom: 60px; border-bottom: 1px solid var(--border-color);">
-        <h2>Get SUDX on QuickSwap</h2>
-        <p class="section-text">
-            SUDX is now live on QuickSwap. You can acquire SUDX by swapping MATIC or any other token on the Polygon network.
-        </p>
-        <div class="cta-buttons">
-            <a href="https://quickswap.exchange/#/swap?outputCurrency=0xc56F971934961267586e8283C06018167F0D0E4C" target="_blank" rel="noopener noreferrer" class="btn">Buy SUDX Now</a>
-        </div>
-        <p class="section-text" style="margin-top: 30px; font-family: 'Fira Code', monospace; font-size: 1.1rem;">
-            Official Contract Address:<br>
-            <code>0xc56F971934961267586e8283C06018167F0D0E4C</code>
-        </p>
-    </section>
+    <div class="container">
+        <!-- How to Buy Section -->
+        <section id="how-to-buy">
+            <div class="panel">
+                <h2>Get SUDX on QuickSwap</h2>
+                <p class="section-text">
+                    SUDX is now live on QuickSwap. You can acquire SUDX by swapping MATIC or any other token on the Polygon network.
+                </p>
+                <div class="cta-buttons">
+                    <a href="https://quickswap.exchange/#/swap?outputCurrency=0xc56F971934961267586e8283C06018167F0D0E4C" target="_blank" rel="noopener noreferrer" class="btn">Buy SUDX Now</a>
+                </div>
+                <p class="section-text" style="margin-top: 30px; font-size: 1.1rem;">
+                    Official Contract Address:<br>
+                    <code>0xc56F971934961267586e8283C06018167F0D0E4C</code>
+                </p>
+            </div>
+        </section>
 
-    <!-- Problem Section -->
-    <section id="problem" class="container">
-        <h2>The Code is Free, but its Developers Are Not.</h2>
-        <p class="section-text">
-            Free and open-source software runs the world. From the servers that power the internet to the <strong>Linux ecosystem</strong> that champions freedom, it's all built by a global community. However, its creators—the developers, maintainers, and designers—often rely on <strong>unstable donations</strong>, volunteer work, and fragmented funding.
-            <br><br>
-            Community gratitude exists, but it rarely converts into fair and sustainable financial support. <strong>SUDX</strong> was born to fix this, creating a direct and transparent bridge between the open-source ethos and the funding power of Web3.
-        </p>
-    </section>
+        <!-- Problem Section -->
+        <section id="problem">
+            <div class="panel">
+                <h2>The Code is Free, but its Developers Are Not.</h2>
+                <p class="section-text">
+                    Free and open-source software runs the world. From the servers that power the internet to the <strong>Linux ecosystem</strong> that champions freedom, it's all built by a global community. However, its creators—the developers, maintainers, and designers—often rely on <strong>unstable donations</strong>, volunteer work, and fragmented funding.
+                    <br><br>
+                    Community gratitude exists, but it rarely converts into fair and sustainable financial support. <strong>SUDX</strong> was born to fix this, creating a direct and transparent bridge between the open-source ethos and the funding power of Web3.
+                </p>
+            </div>
+        </section>
 
-    <!-- Solution Section -->
-    <section id="about" class="container">
-        <h2>Turning Gratitude into Action.</h2>
-        <p class="section-text">
-            In the Linux terminal, <code>sudo</code> is the command that grants elevated privileges to execute critical tasks. It embodies trust, power, and responsibility. Our currency, <strong>SUDX</strong>, is born from this philosophy to become the native token of the open-source ecosystem. The <code>X</code> stands for extension, experimentation, and the future we will build together.
-        </p>
-        <div class="features-grid">
-            <div class="feature-card">
-                <h3>Direct & Transparent Donations</h3>
-                <p>Support your favorite projects and developers with fast, auditable transactions on the Polygon blockchain. Make <code>git push --force-donation</code> your new way of saying thanks.</p>
+        <!-- Solution Section -->
+        <section id="about">
+            <div class="panel">
+                <h2>Turning Gratitude into Action.</h2>
+                <p class="section-text">
+                    In the Linux terminal, <code>sudo</code> is the command that grants elevated privileges to execute critical tasks. It embodies trust, power, and responsibility. Our currency, <strong>SUDX</strong>, is born from this philosophy to become the native token of the open-source ecosystem. The <code>X</code> stands for extension, experimentation, and the future we will build together.
+                </p>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h3>Direct & Transparent Donations</h3>
+                        <p>Support your favorite projects and developers with fast, auditable transactions on the Polygon blockchain.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>On-Chain Reputation</h3>
+                        <p>Receive reputation tokens for your contributions. Build an immutable and valued on-chain resume.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Native Integration</h3>
+                        <p>Our vision is to integrate SUDX directly into the tools developers live in: Git, CI/CD pipelines, and code editors.</p>
+                    </div>
+                </div>
             </div>
-            <div class="feature-card">
-                <h3>On-Chain Reputation</h3>
-                <p>Receive reputation tokens for your contributions. Build an immutable and valued on-chain resume, a true <code>git commit --author="SUDX"</code>.</p>
-            </div>
-            <div class="feature-card">
-                <h3>Native Integration</h3>
-                <p>Our vision is to integrate SUDX directly into the tools developers live in: Git, CI/CD pipelines, code editors, and decentralized networks.</p>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Governance Section -->
-    <section id="governance" class="container">
-        <h2>A Truly Autonomous DAO, Powered by Aragon.</h2>
-        <p class="section-text">
-            Our governance model is designed for maximum security and true decentralization, eliminating central points of failure. We achieve this through a robust architecture powered by <strong>Aragon</strong>.
-        </p>
-        <div class="features-grid">
-            <div class="feature-card">
-                <h3>Automated Execution</h3>
-                <p>When the community approves a proposal, the DAO's smart contracts execute it <strong>automatically</strong>. No manual intervention is needed from the team, ensuring the community's will is law.</p>
+        <!-- Governance Section -->
+        <section id="governance">
+            <div class="panel">
+                <h2>A Truly Autonomous DAO</h2>
+                <p class="section-text">
+                    Our governance model is designed for maximum security and true decentralization, eliminating central points of failure. We achieve this through a robust architecture powered by <strong>Aragon</strong>.
+                </p>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h3>Automated Execution</h3>
+                        <p>When the community approves a proposal, the DAO's smart contracts execute it automatically. No manual intervention is needed.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Two-Layer Treasury</h3>
+                        <p>For security, funds are split between a smaller Operational Treasury (managed by the DAO) and a large Strategic Treasury (in a Safe).</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Explore Our DAO</h3>
+                        <p>Our governance is live. View our treasury, see active proposals, and participate in voting directly on the dashboard.</p>
+                        <a href="https://app.aragon.org/dao/polygon-mainnet/0xA5dEa0A7E9c47d52e735c1d4129Cc02a54966E21/dashboard" target="_blank" rel="noopener noreferrer" class="btn" style="margin-top: 15px;">DAO Dashboard</a>
+                    </div>
+                </div>
             </div>
-            <div class="feature-card">
-                <h3>Two-Layer Treasury</h3>
-                <p>For security, funds are split between a smaller <strong>Operational Treasury</strong> for daily use (managed by the DAO) and a large <strong>Strategic Treasury</strong> (in a Safe), which only refills the DAO's budget after a community vote.</p>
-            </div>
-            <div class="feature-card">
-                <h3>Explore Our DAO</h3>
-                <p>Our governance is live on the Aragon platform. You can view our treasury, see active proposals, and participate in voting directly on the DAO dashboard.</p>
-                <a href="https://app.aragon.org/dao/polygon-mainnet/0xA5dEa0A7E9c47d52e735c1d4129Cc02a54966E21/dashboard" target="_blank" rel="noopener noreferrer" class="btn" style="margin-top: 15px;">Go to DAO Dashboard</a>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Donation Platform Section -->
-    <section id="donation" class="container">
-        <h2>Donation Platform: Coming Soon</h2>
-        <p class="section-text">
-            Our flagship donation platform is in the final stages of development. It will allow anyone to connect their wallet and support verified open-source projects with just a few clicks.
-            <br><br>
-            The platform will be launched shortly after the DAO is live on Mainnet and the initial governance framework is approved by the community.
-        </p>
-        <div class="cta-buttons">
-            <a href="/dashboard" class="btn btn-secondary">View Dashboard (Preview)</a>
-        </div>
-    </section>
+        <!-- Dashboard Section -->
+        <section id="dashboard">
+            <div class="panel">
+                <h2>On-Chain Dashboard</h2>
+                <p class="section-text">
+                    Track key metrics, monitor liquidity pools, and view live transaction feeds directly on our on-chain dashboard.
+                </p>
+                <div class="cta-buttons">
+                    <a href="/dashboard.html" class="btn">View Dashboard</a>
+                </div>
+            </div>
+        </section>
 
-    <!-- Roadmap Section -->
-    <section id="roadmap" class="container">
-        <h2>Our Path to Mainnet and Beyond</h2>
-        <div class="roadmap">
-            <div class="roadmap-phase">
-                <h3>Phase 1: Foundation & Launch</h3>
-                <div class="roadmap-item completed"><span>✓</span> Migration to Polygon & Technical Setup</div>
-                <div class="roadmap-item completed"><span>✓</span> SUDX Token Contract Deployed on Testnet</div>
-                <div class="roadmap-item completed"><span>✓</span> DAO Governance Model Tested & Validated</div>
-                <div class="roadmap-item completed"><span>✓</span> Contract Deployed on Mainnet & Verified</div>
-                <div class="roadmap-item completed"><span>✓</span> Website Launched</div>
-                <div class="roadmap-item completed"><span>✓</span> Launch Whitepaper v1</div>
-                <div class="roadmap-item"><span>●</span> Create & Lock Liquidity Pool on Mainnet</div>
+        <!-- Tokenomics Section -->
+        <section id="tokenomics">
+            <div class="panel">
+                <h2>Tokenomics: Fair and Transparent</h2>
+                <p class="section-text">
+                    A clear and fair distribution is the foundation of trust. Our tokenomics are designed for long-term growth and to empower the community.
+                    <br><strong>Total Supply: 2,800,000,000 SUDX</strong>
+                </p>
+                <div class="tokenomics-chart-container">
+                    <canvas id="tokenomicsChart"></canvas>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h3>Ecosystem & Rewards</h3>
+                        <p><strong>45% (1.26B SUDX)</strong><br>To fund open-source projects, reward contributors, and grow the ecosystem through community governance (DAO).</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Gradual Supply Release</h3>
+                        <p>To ensure market stability, the total supply is not released at once. Major allocations like Team and Ecosystem funds are locked and vest over several years, ensuring a slow and predictable increase in circulating supply.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Liquidity Pool</h3>
+                        <p><strong>~24.95% (~698.5M SUDX)</strong><br>This is the total budget for market liquidity, added gradually via DAO governance.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Market Launch Strategy</h3>
+                        <p><strong>Scenario A (Preferred): Initial Liquidity Pool.</strong> If sufficient capital is available at launch, a small initial SUDX/USDC liquidity pool will be created and locked to ensure a stable trading environment from day one.</p>
+                        <p><strong>Scenario B (Contingency): Direct to Market.</strong> If sufficient capital for a pool is not available, the token will be launched directly. In this case, liquidity will be built organically by the community over time. This is a transparent approach to ensure the project can launch regardless of initial funding.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Team & Founders</h3>
+                        <p><strong>15% (420M SUDX)</strong><br>To reward the founding team, subject to a long-term vesting schedule.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Strategic Treasury</h3>
+                        <p><strong>5% (140M SUDX)</strong><br>A reserve for future opportunities and expenses, governed by the DAO.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Trust & Safety</h3>
+                        <p>To guarantee investor security, team tokens are vested over a 3-year period. The entire initial liquidity pool will be locked for a minimum of 6 months, preventing rug pulls and demonstrating our long-term commitment.</p>
+                    </div>
+                </div>
             </div>
-            <div class="roadmap-phase">
-                <h3>Phase 2: Governance & Growth</h3>
-                <div class="roadmap-item completed"><span>✓</span> Launch Official DAO on Polygon Mainnet</div>
-                <div class="roadmap-item"><span>●</span> First Governance Proposals (Budget & Admin Transfer)</div>
-                <div class="roadmap-item"><span>●</span> List on CoinGecko & CoinMarketCap</div>
-                <div class="roadmap-item"><span>●</span> Launch v1 of the Donation Platform</div>
-            </div>
-            <div class="roadmap-phase">
-                <h3>Phase 3: Ecosystem Expansion</h3>
-                <div class="roadmap-item"><span>●</span> Develop On-Chain Reputation System</div>
-                <div class="roadmap-item"><span>●</span> Pilot Program with Partner Open-Source Projects</div>
-                <div class="roadmap-item"><span>●</span> Begin Airdrop for Early Contributors</div>
-                <div class="roadmap-item"><span>●</span> GitHub & CI/CD Integration Research</div>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Tokenomics Section -->
-    <section id="tokenomics" class="container">
-        <h2>Tokenomics: Fair and Transparent</h2>
-        <p class="section-text">
-            A clear and fair distribution is the foundation of trust. Our tokenomics are designed for long-term growth and to empower the community.
-            <br><strong>Total Supply: 2,800,000,000 SUDX</strong>
-        </p>
-        <div class="tokenomics-chart-container">
-            <canvas id="tokenomicsChart"></canvas>
-        </div>
-        <div class="features-grid">
-            <div class="feature-card">
-                <h3>Ecosystem & Rewards</h3>
-                <p><strong>45% (1.26B SUDX)</strong><br>To fund open-source projects, reward contributors, and grow the ecosystem through community governance (DAO).</p>
+        <!-- Liquidity Drive Section -->
+        <section id="liquidity-drive">
+            <div class="panel">
+                <h2>Help Build Our Liquidity</h2>
+                <p class="section-text">
+                    A strong liquidity pool is crucial for a stable and healthy market. By donating, you directly contribute to the project's long-term stability. All funds will be used to create and lock the initial liquidity pool. Connect your wallet to contribute.
+                </p>
+                <div class="cta-buttons">
+                    <a href="#" id="donateButton" class="btn">Donate to the Liquidity Fund</a>
+                </div>
             </div>
-            <div class="feature-card">
-                <h3>Gradual Supply Release</h3>
-                <p>To ensure market stability, the total supply is not released at once. Major allocations like Team and Ecosystem funds are locked and vest over several years, ensuring a slow and predictable increase in circulating supply.</p>
-            </div>
-            <div class="feature-card">
-                <h3>Liquidity Pool</h3>
-                <p><strong>~24.95% (~698.5M SUDX)</strong><br>This is the total budget for market liquidity. Only a small fraction will be used to create the initial SUDX/USDC pool, which will be locked. The rest will be added gradually via DAO governance to ensure long-term market stability.</p>
-            </div>
-            <div class="feature-card">
-                <h3>Market Launch Strategy</h3>
-                <p><strong>Scenario A (Preferred): Initial Liquidity Pool.</strong> If sufficient capital is available at launch, a small initial SUDX/USDC liquidity pool will be created and locked to ensure a stable trading environment from day one.</p>
-                <p><strong>Scenario B (Contingency): Direct to Market.</strong> If sufficient capital for a pool is not available, the token will be launched directly. In this case, liquidity will be built organically by the community over time. This is a transparent approach to ensure the project can launch regardless of initial funding.</p>
-            </div>
-            <div class="feature-card">
-                <h3>Team & Founders</h3>
-                <p><strong>15% (420M SUDX)</strong><br>To reward the founding team, subject to a long-term vesting schedule to ensure commitment.</p>
-            </div>
-            <div class="feature-card">
-                <h3>Marketing & Partnerships</h3>
-                <p><strong>10% (280M SUDX)</strong><br>To drive adoption, form strategic partnerships, and increase the project's visibility.</p>
-            </div>
-            <div class="feature-card">
-                <h3>Strategic Treasury</h3>
-                <p><strong>5% (140M SUDX)</strong><br>A reserve for future opportunities and expenses, governed by the DAO.</p>
-            </div>
-            <div class="feature-card">
-                <h3>Trust & Safety</h3>
-                <p>To guarantee investor security, team tokens are vested over a 3-year period. The entire initial liquidity pool will be locked for a minimum of 6 months, preventing rug pulls and demonstrating our long-term commitment.</p>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Liquidity Drive Section -->
-    <section id="liquidity-drive" class="container">
-        <h2>Help Build Our Initial Liquidity</h2>
-        <p class="section-text">
-            A strong liquidity pool is crucial for a stable and healthy market. The creation of our initial SUDX/USDC pool depends on community support. By donating, you can directly contribute to the long-term stability and success of the project from day one.
-            <br><br>
-            All donated funds will be used exclusively to create and lock the initial liquidity pool on a decentralized exchange.
-        </p>
-        <div class="cta-buttons">
-            <a href="#" id="donateButton" class="btn">Donate to the Liquidity Fund</a>
-        </div>
-    </section>
-
-    <!-- Community Section -->
-    <section id="community" class="container">
-        <h2><code>sudo join community</code></h2>
-        <p class="section-text">
-            SUDX is built by the community, for the community. Connect with us, contribute ideas, and help shape the future of open source.
-        </p>
-        <div class="cta-buttons">
-            <a href="https://t.me/+aWeTCUiItxk4OWZh" target="_blank" rel="noopener noreferrer" class="btn">Join Telegram</a>
-            <a href="https://x.com/SudxOfficial" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Follow on X (Twitter)</a>
-            <a href="https://github.com/Sudx" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Explore on GitHub</a>
-            <a href="https://www.reddit.com/r/SudxLabs/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Join on Reddit</a>
-        </div>
-    </section>
+        <!-- Community Section -->
+        <section id="community">
+            <div class="panel">
+                <h2><code>sudo join community</code></h2>
+                <p class="section-text">
+                    SUDX is built by the community, for the community. Connect with us, contribute ideas, and help shape the future of open source.
+                </p>
+                <div class="cta-buttons">
+                    <a href="https://t.me/+aWeTCUiItxk4OWZh" target="_blank" rel="noopener noreferrer" class="btn">Join Telegram</a>
+                    <a href="https://x.com/SudxOfficial" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Follow on X</a>
+                    <a href="https://github.com/Sudx" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Explore on GitHub</a>
+                    <a href="https://www.reddit.com/r/SudxLabs/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Join on Reddit</a>
+                </div>
+            </div>
+        </section>
+    </div>
 
     <!-- Footer -->
     <footer>
@@ -234,9 +211,6 @@
                 <a href="https://app.uncx.network/lockers/univ2/chain/137/address/0x884c355bdd0332abbbf3bf7ca3f68029ae500030" target="_blank" rel="noopener noreferrer">Liquidity Locked</a>
                 <a href="mailto:sudx.oficial@gmail.com">Contact</a>
             </div>
-            <p class="contract-address" id="contractAddress">
-                Mainnet Contract: 0xc56F971934961267586e8283C06018167F0D0E4C
-            </p>
             <p class="copyright">&copy; 2025 SUDX. Licensed under the MIT License.</p>
         </div>
     </footer>
