@@ -1,24 +1,24 @@
-/* Importa as fontes do Google Fonts */
+/* Import Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap');
 
 /*
-  Estilo Cyberpunk por Gemini
-  - Fundo Preto Absoluto
-  - Paleta de Cores: Roxo da Marca, Roxo Neon, Ciano Neon
-  - Tipografia: Orbitron para títulos, Share Tech Mono para texto
-  - Elementos de UI: Painéis com bordas angulares e brilhantes
+  Cyberpunk Style by Gemini
+  - Absolute Black Background
+  - Color Palette: Brand Purple, Neon Purple, Neon Cyan
+  - Typography: Orbitron for titles, Share Tech Mono for text
+  - UI Elements: Panels with angular and glowing borders
 */
 
 :root {
-    /* Paleta de Cores Cyberpunk */
+    /* Cyberpunk Color Palette */
     --bg-color: #000000;
-    --panel-bg-color: #15002a; /* Roxo escuro do logo */
-    --primary-glow-color: #A020F0; /* Roxo neon vibrante */
-    --secondary-glow-color: #00FFFF; /* Ciano neon */
+    --panel-bg-color: #15002a; /* Dark purple from the logo */
+    --primary-glow-color: #A020F0; /* Vibrant neon purple */
+    --secondary-glow-color: #00FFFF; /* Neon cyan */
     --text-color: #E0E0E0;
     --text-color-darker: #a0a0a0;
     
-    /* Efeitos */
+    /* Effects */
     --primary-glow: 0 0 5px var(--primary-glow-color), 0 0 10px var(--primary-glow-color);
     --secondary-glow: 0 0 5px var(--secondary-glow-color), 0 0 10px var(--secondary-glow-color);
 }
@@ -31,15 +31,15 @@ body {
     padding: 0;
     line-height: 1.7;
     font-size: 18px;
-    /* Fundo com grade sutil */
+    /* Subtle grid background */
     background-image: 
         linear-gradient(rgba(160, 32, 240, 0.15) 1px, transparent 1px),
         linear-gradient(90deg, rgba(160, 32, 240, 0.15) 1px, transparent 1px);
     background-size: 40px 40px;
-    overflow-x: hidden; /* Previne scroll horizontal causado por alguns efeitos */
+    overflow-x: hidden; /* Prevents horizontal scroll caused by some effects */
 }
 
-/* Efeito Scanline animado (MAIS FORTE) */
+/* Animated Scanline Effect (STRONGER) */
 body::after {
     content: ' ';
     display: block;
@@ -49,11 +49,11 @@ body::after {
     width: 100%;
     height: 100%;
     background: linear-gradient(to bottom, rgba(18, 16, 16, 0) 0%, rgba(0, 0, 0, 0.5) 50%, rgba(18, 16, 16, 0) 100%);
-    background-size: 100% 6px; /* Linhas mais grossas */
+    background-size: 100% 6px; /* Thicker lines */
     animation: scanline 6s linear infinite;
     z-index: 9999;
     pointer-events: none;
-    opacity: 0.6; /* Opacidade aumentada */
+    opacity: 0.6; /* Increased opacity */
 }
 
 @keyframes scanline {
@@ -115,7 +115,7 @@ h1 {
     margin-top: 40px;
 }
 
-/* Botão com estilo Cyberpunk */
+/* Cyberpunk Style Button */
 .btn {
     display: inline-block;
     padding: 12px 30px;
@@ -150,15 +150,15 @@ h1 {
     box-shadow: 0 0 20px var(--primary-glow-color), 0 0 30px var(--primary-glow-color);
 }
 
-/* Painel com bordas angulares e cantos decorativos */
+/* Panel with angular borders and decorative corners */
 .panel {
-    background-color: rgba(21, 0, 42, 0.85); /* Fundo do painel com transparência */
+    background-color: rgba(21, 0, 42, 0.85); /* Panel background with transparency */
     padding: 40px;
     border: 1px solid var(--primary-glow-color);
     position: relative;
     box-shadow: inset 0 0 15px rgba(160, 32, 240, 0.5);
     clip-path: polygon(
-        0% 20px, /* Canto superior esquerdo */
+        0% 20px, /* Top-left corner */
         20px 0%,
         calc(100% - 20px) 0%,
         100% 20px,
@@ -169,28 +169,28 @@ h1 {
     );
 }
 
-/* Cantos decorativos (MAIS FORTES) */
+/* Decorative corners (STRONGER) */
 .panel::before, .panel::after {
     content: '';
     position: absolute;
-    width: 40px; /* Tamanho aumentado */
-    height: 40px; /* Tamanho aumentado */
+    width: 40px; /* Increased size */
+    height: 40px; /* Increased size */
     border-color: var(--secondary-glow-color);
     border-style: solid;
-    opacity: 1.0; /* Opacidade máxima */
+    opacity: 1.0; /* Maximum opacity */
     box-shadow: var(--secondary-glow);
 }
 
 .panel::before {
     top: -10px;
     left: -10px;
-    border-width: 4px 0 0 4px; /* Borda mais grossa */
+    border-width: 4px 0 0 4px; /* Thicker border */
 }
 
 .panel::after {
     bottom: -10px;
     right: -10px;
-    border-width: 0 4px 4px 0; /* Borda mais grossa */
+    border-width: 0 4px 4px 0; /* Thicker border */
 }
 
 .panel h2 {
@@ -228,7 +228,7 @@ code {
     margin-top: 60px;
 }
 
-/* Card com borda simples */
+/* Card with simple border */
 .feature-card {
     background: transparent;
     border: 1px solid var(--primary-glow-color);
@@ -253,7 +253,7 @@ code {
     font-size: 1rem;
 }
 
-/* Navegação */
+/* Navigation */
 .main-nav {
     position: sticky;
     top: 0;
@@ -304,7 +304,7 @@ code {
     font-size: 0.9rem;
 }
 
-/* Rodapé */
+/* Footer */
 footer {
     text-align: center;
     padding: 40px 20px;
@@ -339,7 +339,7 @@ footer {
     font-size: 0.9rem;
 }
 
-/* Outros ajustes */
+/* Other adjustments */
 .tokenomics-chart-container {
     width: 100%;
     max-width: 450px;
@@ -370,7 +370,7 @@ footer {
     50% { background-color: var(--primary-glow-color); box-shadow: var(--primary-glow); }
 }
 
-/* Responsividade */
+/* Responsiveness */
 @media (max-width: 768px) {
     body {
         font-size: 16px;
@@ -385,7 +385,7 @@ footer {
     }
 
     .nav-links {
-        display: none; /* Simplifica para mobile, pode ser um menu hamburguer depois */
+        display: none; /* Simplifies for mobile, can be a hamburger menu later */
     }
 
     .btn-nav {
@@ -395,20 +395,20 @@ footer {
 
     .panel {
         padding: 25px;
-        clip-path: none; /* Remove o clip-path complexo em telas menores */
-        border-radius: 10px; /* Usa bordas arredondadas como fallback */
+        clip-path: none; /* Removes complex clip-path on smaller screens */
+        border-radius: 10px; /* Uses rounded borders as a fallback */
     }
 
     .panel::before, .panel::after {
-        display: none; /* Esconde os cantos decorativos em mobile */
+        display: none; /* Hides decorative corners on mobile */
     }
 }
 
 /* =============================================== */
-/* Estilos para o Novo Dashboard de Analytics      */
+/* Styles for the New Analytics Dashboard          */
 /* =============================================== */
 
-/* Grid para as Estatísticas Principais */
+/* Grid for Main Stats */
 .stats-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -449,10 +449,10 @@ footer {
     line-height: 1.2;
 }
 
-/* Estilos para as Tabelas de Dados */
+/* Styles for Data Tables */
 .table-container {
     width: 100%;
-    overflow-x: auto; /* Permite scroll horizontal em telas pequenas */
+    overflow-x: auto; /* Allows horizontal scroll on small screens */
     border: 1px solid var(--primary-glow-color);
     background-color: rgba(21, 0, 42, 0.8);
     padding: 10px;
@@ -461,7 +461,7 @@ footer {
 table {
     width: 100%;
     border-collapse: collapse;
-    min-width: 600px; /* Garante que a tabela tenha uma largura mínima */
+    min-width: 600px; /* Ensures the table has a minimum width */
 }
 
 thead {
@@ -499,16 +499,16 @@ td {
 }
 
 td .buy {
-    color: #00FF00; /* Verde para compras */
+    color: #00FF00; /* Green for buys */
     text-shadow: 0 0 5px #00FF00;
 }
 
 td .sell {
-    color: #FF0000; /* Vermelho para vendas */
+    color: #FF0000; /* Red for sells */
     text-shadow: 0 0 5px #FF0000;
 }
 
-/* Links dentro da tabela */
+/* Links within the table */
 td a {
     color: var(--secondary-glow-color);
     text-decoration: none;
@@ -519,7 +519,7 @@ td a:hover {
     text-shadow: var(--secondary-glow);
 }
 
-/* Mensagem de carregamento/vazio na tabela */
+/* Loading/empty message in the table */
 .table-loading-row td {
     text-align: center;
     padding: 40px;

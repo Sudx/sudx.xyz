@@ -1,13 +1,13 @@
-// Aguarda o carregamento completo do DOM antes de executar o script
+// Waits for the DOM to be fully loaded before executing the script
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- CONFIGURAÇÃO ---
-    // Endereço do token SUDX na rede Polygon. 
-    // Este é o único dado que precisamos para encontrar todos os seus pares.
-    const SUDX_TOKEN_ADDRESS = '0xc56F971934961267586e8283C06018167F0D0E4C'; // Endereço de exemplo, substitua pelo real
-    const CHAIN_NAME = 'polygon'; // ou 'bsc', 'ethereum', etc.
+    // --- CONFIGURATION ---
+    // Address of the SUDX token on the Polygon network.
+    // This is the only data we need to find all its pairs.
+    const SUDX_TOKEN_ADDRESS = '0xc56F971934961267586e8283C06018167F0D0E4C'; // Example address, replace with the real one
+    const CHAIN_NAME = 'polygon'; // or 'bsc', 'ethereum', etc.
 
-    // --- ELEMENTOS DO DOM ---
+    // --- DOM ELEMENTS ---
     const marketPriceElem = document.getElementById('market-price');
     const marketLiquidityElem = document.getElementById('market-liquidity');
     const marketVolumeElem = document.getElementById('market-volume');
@@ -15,12 +15,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const poolsTableBody = document.getElementById('pools-table-body');
     const swapsTableBody = document.getElementById('swaps-table-body');
 
-    // --- FUNÇÕES AUXILIARES ---
+    // --- HELPER FUNCTIONS ---
 
     /**
-     * Formata um número como uma string de moeda em USD.
-     * @param {number} value O número a ser formatado.
-     * @returns {string} A string formatada (ex: $1,234.56).
+     * Formats a number as a USD currency string.
+     * @param {number} value The number to format.
+     * @returns {string} The formatted string (e.g., $1,234.56).
      */
     const formatCurrency = (value) => {
         if (typeof value !== 'number') return '$0.00';
@@ -33,22 +33,22 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     
     /**
-     * Formata um número grande com abreviações (K, M, B).
-     * @param {number} value O número a ser formatado.
-     * @returns {string} A string formatada (ex: $1.23M).
+     * Formats a large number with abbreviations (K, M, B).
+     * @param {number} value The number to format.
+     * @returns {string} The formatted string (e.g., $1.23M).
      */
     const formatCurrencyShort = (value) => {
         if (typeof value !== 'number') return '$0';
-        if (value >= 1e9) return `$${(value / 1e9).toFixed(2)}B`;
-        if (value >= 1e6) return `$${(value / 1e6).toFixed(2)}M`;
-        if (value >= 1e3) return `$${(value / 1e3).toFixed(2)}K`;
+        if (value >= 1e9) return `${(value / 1e9).toFixed(2)}B`;
+        if (value >= 1e6) return `${(value / 1e6).toFixed(2)}M`;
+        if (value >= 1e3) return `${(value / 1e3).toFixed(2)}K`;
         return formatCurrency(value);
     };
 
     /**
-     * Formata o preço, mostrando mais casas decimais para valores pequenos.
-     * @param {number} value O preço a ser formatado.
-     * @returns {string} A string de preço formatada.
+     * Formats the price, showing more decimal places for small values.
+     * @param {number} value The price to format.
+     * @returns {string} The formatted price string.
      */
     const formatPrice = (value) => {
         if (typeof value !== 'number') return '$0.00';
@@ -62,10 +62,10 @@ document.addEventListener('DOMContentLoaded', () => {
         return formatCurrency(value);
     };
 
-    // --- LÓGICA PRINCIPAL ---
+    // --- MAIN LOGIC ---
 
     /**
-     * Busca os dados da API do DEX Screener e atualiza o dashboard.
+     * Fetches data from the DEX Screener API and updates the dashboard.
      */
     async function fetchMarketData() {
         const apiUrl = `https://api.dexscreener.com/latest/dex/tokens/${SUDX_TOKEN_ADDRESS}`;
@@ -73,39 +73,39 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             const response = await fetch(apiUrl);
             if (!response.ok) {
-                throw new Error(`Erro na API: ${response.statusText}`);
+                throw new Error(`API Error: ${response.statusText}`);
             }
             const data = await response.json();
             
             if (!data.pairs || data.pairs.length === 0) {
-                console.warn('Nenhum par encontrado para o token SUDX.');
+                console.warn('No pairs found for the SUDX token.');
                 displayNoData();
                 return;
             }
 
-            // Filtra pares que podem não ter dados completos
+            // Filter out pairs that may not have complete data
             const validPairs = data.pairs.filter(p => p.liquidity && p.priceUsd);
 
-            // Processa e exibe os dados
+            // Process and display the data
             processAndDisplayOverview(validPairs);
             displayPoolsTable(validPairs);
             fetchAndDisplaySwaps(validPairs);
 
         } catch (error) {
-            console.error("Falha ao buscar dados do mercado:", error);
+            console.error("Failed to fetch market data:", error);
             displayError();
         }
     }
 
     /**
-     * Calcula e exibe a visão geral do mercado (agregado).
-     * @param {Array} pairs A lista de pares da API.
+     * Calculates and displays the market overview (aggregated).
+     * @param {Array} pairs The list of pairs from the API.
      */
     function processAndDisplayOverview(pairs) {
         const totalLiquidity = pairs.reduce((sum, pair) => sum + pair.liquidity.usd, 0);
         const totalVolume24h = pairs.reduce((sum, pair) => sum + pair.volume.h24, 0);
         
-        // Usa o FDV (Fully Diluted Valuation) do par mais líquido como uma aproximação do Market Cap
+        // Use the FDV (Fully Diluted Valuation) of the most liquid pair as an approximation of the Market Cap
         const primaryPair = pairs.sort((a, b) => b.liquidity.usd - a.liquidity.usd)[0];
         const marketCap = primaryPair.fdv; 
         const price = parseFloat(primaryPair.priceUsd);
@@ -117,18 +117,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /**
-     * Exibe a tabela de pools de liquidez ativos.
-     * @param {Array} pairs A lista de pares da API.
+     * Displays the table of active liquidity pools.
+     * @param {Array} pairs The list of pairs from the API.
      */
     function displayPoolsTable(pairs) {
-        poolsTableBody.innerHTML = ''; // Limpa a tabela
+        poolsTableBody.innerHTML = ''; // Clear the table
 
         if (pairs.length === 0) {
-            poolsTableBody.innerHTML = '<tr><td colspan="5" style="text-align: center;">Nenhum pool ativo encontrado.</td></tr>';
+            poolsTableBody.innerHTML = '<tr><td colspan="5" style="text-align: center;">No active pools found.</td></tr>';
             return;
         }
 
-        // Ordena por liquidez (maior primeiro)
+        // Sort by liquidity (highest first)
         const sortedPairs = pairs.sort((a, b) => b.liquidity.usd - a.liquidity.usd);
 
         sortedPairs.forEach(pair => {
@@ -149,13 +149,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     /**
-     * Busca e exibe os swaps mais recentes dos principais pools.
-     * @param {Array} pairs A lista de pares da API.
+     * Fetches and displays the most recent swaps from the main pools.
+     * @param {Array} pairs The list of pairs from the API.
      */
     async function fetchAndDisplaySwaps(pairs) {
-        swapsTableBody.innerHTML = ''; // Limpa a tabela
+        swapsTableBody.innerHTML = ''; // Clear the table
         
-        // Pega os 3 pares mais líquidos para buscar swaps
+        // Get the 3 most liquid pairs to fetch swaps from
         const topPairs = pairs.slice(0, 3);
         let allSwaps = [];
 
@@ -165,21 +165,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 const response = await fetch(swapsUrl);
                 const data = await response.json();
                 if (data.pair && data.pair.txns) {
-                    // Adiciona informações do par a cada transação
+                    // Add pair information to each transaction
                     const swaps = data.pair.txns.map(txn => ({...txn, pair: data.pair }));
                     allSwaps.push(...swaps);
                 }
             } catch (error) {
-                console.warn(`Não foi possível buscar swaps para o par ${pair.pairAddress}:`, error);
+                console.warn(`Could not fetch swaps for pair ${pair.pairAddress}:`, error);
             }
         }
 
         if (allSwaps.length === 0) {
-            swapsTableBody.innerHTML = '<tr><td colspan="5" style="text-align: center;">Nenhum swap recente encontrado.</td></tr>';
+            swapsTableBody.innerHTML = '<tr><td colspan="5" style="text-align: center;">No recent swaps found.</td></tr>';
             return;
         }
 
-        // Ordena todos os swaps por data (mais recente primeiro) e pega os 20 mais recentes
+        // Sort all swaps by date (most recent first) and get the 20 most recent
         const recentSwaps = allSwaps.sort((a, b) => b.timestamp - a.timestamp).slice(0, 20);
 
         recentSwaps.forEach(swap => {
@@ -189,7 +189,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             const row = document.createElement('tr');
             row.innerHTML = `
-                <td class="${isBuy ? 'buy' : 'sell'}">${isBuy ? 'COMPRA' : 'VENDA'}</td>
+                <td class="${isBuy ? 'buy' : 'sell'}">${isBuy ? 'BUY' : 'SELL'}</td>
                 <td>${formatCurrency(swap.amountUsd)}</td>
                 <td>${amountToken} ${tokenSymbol}</td>
                 <td>${swap.pair.dexId}</td>
@@ -200,20 +200,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /**
-     * Exibe uma mensagem de erro no dashboard.
+     * Displays an error message on the dashboard.
      */
     function displayError() {
-        const errorMsg = "Erro ao carregar dados";
+        const errorMsg = "Error loading data";
         marketPriceElem.textContent = errorMsg;
         marketLiquidityElem.textContent = errorMsg;
         marketVolumeElem.textContent = errorMsg;
         marketCapElem.textContent = errorMsg;
-        poolsTableBody.innerHTML = `<tr><td colspan="5" style="text-align: center;">${errorMsg}. Tente recarregar a página.</td></tr>`;
+        poolsTableBody.innerHTML = `<tr><td colspan="5" style="text-align: center;">${errorMsg}. Try reloading the page.</td></tr>`;
         swapsTableBody.innerHTML = `<tr><td colspan="5" style="text-align: center;">${errorMsg}.</td></tr>`;
     }
     
     /**
-     * Exibe mensagem quando nenhum dado é encontrado.
+     * Displays a message when no data is found.
      */
     function displayNoData() {
         const noDataMsg = "N/A";
@@ -221,14 +221,14 @@ document.addEventListener('DOMContentLoaded', () => {
         marketLiquidityElem.textContent = noDataMsg;
         marketVolumeElem.textContent = noDataMsg;
         marketCapElem.textContent = noDataMsg;
-        poolsTableBody.innerHTML = `<tr><td colspan="5" style="text-align: center;">Nenhum pool de liquidez encontrado para este token.</td></tr>`;
-        swapsTableBody.innerHTML = `<tr><td colspan="5" style="text-align: center;">Nenhum swap encontrado.</td></tr>`;
+        poolsTableBody.innerHTML = `<tr><td colspan="5" style="text-align: center;">No liquidity pools found for this token.</td></tr>`;
+        swapsTableBody.innerHTML = `<tr><td colspan="5" style="text-align: center;">No swaps found.</td></tr>`;
     }
 
 
-    // --- INICIALIZAÇÃO ---
+    // --- INITIALIZATION ---
     fetchMarketData();
     
-    // Opcional: Atualiza os dados a cada 60 segundos
+    // Optional: Refresh data every 60 seconds
     setInterval(fetchMarketData, 60000);
 });

@@ -1,20 +1,20 @@
 [
   {
     "id": 1,
-    "name": "Projeto Exemplo A (Fictício)",
-    "description": "Um framework web minimalista para aplicações descentralizadas.",
+    "name": "Example Project A (Fictional)",
+    "description": "A minimalist web framework for decentralized applications.",
     "address": "0x0000000000000000000000000000000000000001"
   },
   {
     "id": 2,
-    "name": "Biblioteca de Utilitários B (Fictício)",
-    "description": "Uma coleção de funções úteis para desenvolvimento em Solidity.",
+    "name": "Utility Library B (Fictional)",
+    "description": "A collection of useful functions for Solidity development.",
     "address": "0x0000000000000000000000000000000000000002"
   },
   {
     "id": 3,
-    "name": "Ferramenta de Linha de Comando C (Fictício)",
-    "description": "Uma ferramenta para automatizar a implantação de contratos inteligentes.",
+    "name": "Command Line Tool C (Fictional)",
+    "description": "A tool to automate the deployment of smart contracts.",
     "address": "0x0000000000000000000000000000000000000003"
   }
 ]
