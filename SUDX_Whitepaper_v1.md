@@ -120,6 +120,7 @@ To ensure the stability of the project and protect the interests of the communit
 1.  **Initial Liquidity Pool Locking:**
     *   The entirety (100%) of the initial liquidity created at launch will be locked in a smart contract for a minimum of **6 months**.
     *   **Objective:** This mechanism prevents the sudden removal of liquidity ("Rug Pull"), one of the most common risks in DeFi projects, demonstrating the team's long-term commitment to market stability. The liquidity depth will be progressively increased via DAO governance as the project matures.
+    *   **Status (2025-07-11):** ✅ **Completed.** The initial liquidity pool has been locked. The lock can be publicly verified [here](https://app.uncx.network/lockers/univ2/chain/137/address/0x884c355bdd0332abbbf3bf7ca3f68029ae500030).
 
 2.  **Team Token Vesting (420M SUDX):**
     *   The tokens allocated to the team will not be released immediately. They will follow a vesting schedule.
@@ -167,7 +168,7 @@ The SUDX project has migrated from Solana to **Polygon**. This decision was made
     *   ✅ **Contract deployed to the Polygon Mainnet & Verified**
     *   ✅ **Website Launched on sudx.xyz**
     *   ✅ **Whitepaper v1 Launched**
-    *   ⏳ Creation and locking of the Liquidity Pool on QuickSwap (Target: $400 USDC)
+    *   ✅ **Creation and locking of the Liquidity Pool on QuickSwap**
 
 *   **Phase 2: Proof of Concept (Q4 2025 - Q1 2026)**
     *   ✅ Launch Official DAO on Polygon Mainnet
