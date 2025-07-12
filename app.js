@@ -1,3 +1,6 @@
+import { injectSpeedInsights } from '@vercel/speed-insights';
+
+injectSpeedInsights();
 document.addEventListener('DOMContentLoaded', () => {
     // --- CONFIGURATION ---
     // Once the SUDX Token is deployed on Polygon Mainnet, update this address.
