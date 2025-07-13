@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SUDX | Fund Liquidity</title>
+    <meta name="description" content="Help strengthen the SUDX market by contributing to the liquidity pool. Donations in USDC help create a more stable and robust trading environment for everyone.">
+    <link rel="icon" type="image/png" href="assets/bitmap32-32.png" sizes="32x32">
+    <link rel="apple-touch-icon" href="assets/bitmap192-192.png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <nav class="main-nav">
+        <div class="nav-container">
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="whitepaper.html">Whitepaper</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="donate.html">Donate to SUDX</a></li>
+                <li><a href="liquidity.html">Fund Liquidity</a></li>
+                <li><a href="/#community">Community</a></li>
+            </ul>
+            <a href="#" id="connectWalletBtn" class="btn btn-nav">Connect Wallet</a>
+        </div>
+    </nav>
+
+    <header class="container">
+        <h1>Fund the Liquidity Pool<span class="cursor"></span></h1>
+        <p class="slogan">Strengthen the market for the entire community.</p>
+    </header>
+
+    <div class="container">
+        <section id="liquidity-donation-panel">
+            <div class="panel">
+                <h2>Why Liquidity Matters</h2>
+                <p class="section-text">
+                    A deep liquidity pool is vital for a healthy market. It reduces price volatility (slippage) during trades and provides confidence for larger investors. By donating USDC, you help us create a more stable SUDX/USDC trading pair on decentralized exchanges like QuickSwap.
+                </p>
+                <div id="wallet-message" class="wallet-status-message">
+                    Please connect your wallet to enable the donation button.
+                </div>
+                <div class="cta-buttons">
+                    <button id="donateUSDCBtn" class="btn">Donate USDC</button>
+                </div>
+                <p class="section-text" style="margin-top: 30px; font-size: 1.1rem;">
+                    All contributions are sent to the official SUDX liquidity fund address:<br>
+                    <code style="overflow-wrap: break-word; word-break: break-all; white-space: normal;">0xffC666cD50a6250CDc83E44C5f6e57Ec6f6074b4</code>
+                </p>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container">
+            <img src="assets/icon-final-monogram.svg" alt="SUDX Logo" class="footer-logo">
+            <div class="footer-links">
+                <a href="https://polygonscan.com/token/0xc56F971934961267586e8283C06018167F0D0E4C" target="_blank" rel="noopener noreferrer">Contract</a>
+                <a href="https://app.uncx.network/lockers/token/chain/137/address/0xc56f971934961267586e8283c06018167f0d0e4c" target="_blank" rel="noopener noreferrer">Team Vesting</a>
+                <a href="https://app.uncx.network/lockers/univ2/chain/137/address/0x884c355bdd0332abbbf3bf7ca3f68029ae500030" target="_blank" rel="noopener noreferrer">Liquidity Locked</a>
+                <a href="mailto:sudx.oficial@gmail.com">Contact</a>
+            </div>
+            <p class="copyright">&copy; 2025 SUDX. Licensed under the MIT License.</p>
+        </div>
+    </footer>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/5.7.2/ethers.umd.min.js"></script>
+    <script src="liquidity.js"></script>
+
+</body>
+</html>

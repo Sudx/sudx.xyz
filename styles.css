@@ -267,12 +267,11 @@ code {
 
 .nav-container {
     display: flex;
-    justify-content: center;
+    justify-content: space-between; /* Pushes items to the edges */
     align-items: center;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
-    position: relative;
 }
 
 .nav-links {
@@ -281,6 +280,9 @@ code {
     gap: 30px;
     margin: 0;
     padding: 0;
+    /* Center the links by adding equal margin on both sides */
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .nav-links a {
@@ -298,8 +300,7 @@ code {
 }
 
 .btn-nav {
-    position: absolute;
-    right: 20px;
+    /* Removed absolute positioning */
     padding: 8px 20px;
     font-size: 0.9rem;
 }
@@ -525,4 +526,26 @@ td a:hover {
     padding: 40px;
     color: var(--text-color-darker);
     font-style: italic;
+}
+
+/* Style for project addresses to prevent overflow */
+.project-address code {
+    display: inline-block;
+    max-width: 100%;
+    overflow-wrap: break-word;
+    word-break: break-all;
+    white-space: normal;
+}
+
+/* Message for wallet connection status */
+.wallet-status-message {
+    display: none; /* Hidden by default, controlled by JS */
+    text-align: center;
+    padding: 15px;
+    margin: 20px auto 30px auto;
+    border: 1px dashed var(--secondary-glow-color);
+    max-width: 500px;
+    color: var(--secondary-glow-color);
+    font-family: 'Share Tech Mono', monospace;
+    box-shadow: inset 0 0 10px rgba(0, 255, 255, 0.2);
 }
