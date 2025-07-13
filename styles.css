@@ -267,11 +267,12 @@ code {
 
 .nav-container {
     display: flex;
-    justify-content: space-between; /* Pushes items to the edges */
+    justify-content: center; /* Center the main content (the links) */
     align-items: center;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+    position: relative; /* Required for absolute positioning of the button */
 }
 
 .nav-links {
@@ -280,9 +281,6 @@ code {
     gap: 30px;
     margin: 0;
     padding: 0;
-    /* Center the links by adding equal margin on both sides */
-    margin-left: auto;
-    margin-right: auto;
 }
 
 .nav-links a {
@@ -300,7 +298,8 @@ code {
 }
 
 .btn-nav {
-    /* Removed absolute positioning */
+    position: absolute; /* Position independently from the links */
+    right: -40px; /* Increased from 20px to create more space */
     padding: 8px 20px;
     font-size: 0.9rem;
 }

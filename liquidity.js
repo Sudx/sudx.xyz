@@ -1,3 +1,6 @@
+import { injectSpeedInsights } from '@vercel/speed-insights';
+injectSpeedInsights();
+
 // --- CONFIGURATION ---
 const usdcTokenAddress = '0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359'; // Official USDC on Polygon
 const liquidityFundAddress = '0xffC666cD50a6250CDc83E44C5f6e57Ec6f6074b4'; // SUDX Liquidity Fund

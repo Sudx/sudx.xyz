@@ -1,3 +1,6 @@
+import { injectSpeedInsights } from '@vercel/speed-insights';
+injectSpeedInsights();
+
 // --- CONFIGURATION ---
 const sudxTokenAddress = '0xc56F971934961267586e8283C06018167F0D0E4C';
 const sudxDaoTreasuryAddress = '0xA5dEa0A7E9c47d52e735c1d4129Cc02a54966E21'; // Official DAO Treasury

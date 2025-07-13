@@ -1,9 +1,6 @@
 import { injectSpeedInsights } from '@vercel/speed-insights';
 
 injectSpeedInsights();
-import { injectSpeedInsights } from '@vercel/speed-insights';
-
-injectSpeedInsights();
 
 const connectWallet = async () => {
     if (typeof window.ethereum === 'undefined') {
@@ -28,7 +25,6 @@ const connectWallet = async () => {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-    // --- CONFIGURATION ---
     const MAINNET_CONTRACT_ADDRESS = '0xc56F971934961267586e8283C06018167F0D0E4C';
 
     // --- DYNAMIC CONTENT ---
