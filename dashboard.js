@@ -1,6 +1,3 @@
-import { injectSpeedInsights } from '@vercel/speed-insights';
-injectSpeedInsights();
-
 // Waits for the DOM to be fully loaded before executing the script
 document.addEventListener('DOMContentLoaded', () => {
 
