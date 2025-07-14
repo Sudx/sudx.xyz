@@ -191,7 +191,7 @@ The SUDX project has migrated from Solana to **Polygon**. This decision was made
 
 SUDX is built by the community, for the community. Connect, contribute ideas, and help shape the future of open source.
 
-*   [Telegram](https://t.me/+aWeTCUiItxk4OWZh)
+*   [Telegram](https://t.me/+WsyTH_KiBDxjNzBh)
 *   [X (Twitter)](https://x.com/SudxOfficial)
 *   [Reddit](https://www.reddit.com/r/SudxLabs/)
 *   [GitHub](https://github.com/Sudx)
