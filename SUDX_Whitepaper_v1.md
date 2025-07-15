@@ -191,6 +191,7 @@ The SUDX project has migrated from Solana to **Polygon**. This decision was made
 
 SUDX is built by the community, for the community. Connect, contribute ideas, and help shape the future of open source.
 
+*   [Website](https://sudx.xyz)
 *   [Telegram](https://t.me/+WsyTH_KiBDxjNzBh)
 *   [X (Twitter)](https://x.com/SudxOfficial)
 *   [Reddit](https://www.reddit.com/r/SudxLabs/)
@@ -207,9 +208,14 @@ SUDX is built by the community, for the community. Connect, contribute ideas, an
 ---
 ### Important Addresses (Polygon Mainnet)
 
-*   **Token Contract Address (SUDX):** `0xc56F971934961267586e8283C06018167F0D0E4C`
-*   **Deployer Wallet:** The address of the wallet used for deployment.
-*   **Quote Token (USDC):** `0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359` (Official USDC on Polygon)
+| Description | Address |
+| :--- | :--- |
+| **SUDX Token Contract** | `0xc56F971934961267586e8283C06018167F0D0E4C` |
+| **Official DAO Treasury** | `0xA5dEa0A7E9c47d52e735c1d4129Cc02a54966E21` |
+| **Team Vesting Contract** | `0xc56f971934961267586e8283c06018167f0d0e4c` |
+| **Ecosystem Fund Wallet** | `0x891D5fF7A74A605334292553B1eeD38fBC4` |
+| **Project Operations Wallet** | `0x0aE53A572274a40685256E8a4823e6f896CBF05` |
+| **Quote Token (USDC)** | `0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359` |
 
 ---
 ### Decision History
