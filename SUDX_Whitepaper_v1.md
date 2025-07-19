@@ -151,7 +151,17 @@ The table below shows the potential value of this 1,000,000 SUDX portfolio at di
 
 ---
 
-## 5. Roadmap
+## 5. Token Launch and Initial Distribution
+
+To ensure a fair and transparent launch, SUDX did not conduct a private sale, Initial Coin Offering (ICO), or Initial Exchange Offering (IEO). The project was self-funded, and tokens were introduced to the market through a direct-to-DEX (Decentralized Exchange) listing.
+
+This approach aligns with our core values of decentralization and equal opportunity, allowing anyone to acquire SUDX from the open market from day one without preferential treatment for early investors.
+
+The initial market liquidity was established by pairing a portion of the total SUDX supply with USDC on the QuickSwap exchange. The distribution of the total token supply is detailed in the **Tokenomics** section. This method ensures immediate utility and access for the community.
+
+---
+
+## 6. Roadmap
 
 **IMPORTANT NOTICE (2025-07-06): Blockchain Migration**
 The SUDX project has migrated from Solana to **Polygon**. This decision was made due to the high costs associated with creating markets on Solana, which would have made the project's long-term strategy unfeasible. The migration to Polygon will allow for a more cost-effective and sustainable infrastructure, while keeping the values, tokenomics, and vision of SUDX intact.
@@ -185,7 +195,7 @@ The SUDX project has migrated from Solana to **Polygon**. This decision was made
 
 ---
 
-## 6. Community (Final Call to Action)
+## 7. Community (Final Call to Action)
 
 ## `sudo join community`
 
