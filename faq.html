@@ -30,16 +30,31 @@
 
     <nav class="main-nav">
         <div class="nav-container">
-            <ul class="nav-links">
-                <li><a href="/">Home</a></li>
-                <li><a href="whitepaper.html">Whitepaper</a></li>
-                <li><a href="dashboard.html">Dashboard</a></li>
-                <li><a href="donate.html">Donate to SUDX</a></li>
-                <li><a href="liquidity.html">Fund Liquidity</a></li>
-                <li><a href="faq.html">FAQ</a></li>
-                <li><a href="/#community">Community</a></li>
-            </ul>
-            <a href="#" id="connectWalletBtn" class="btn btn-nav">Connect Wallet</a>
+            <a href="/" class="nav-logo-link">
+                <img src="assets/icon-final-monogram.svg" alt="SUDX Logo" class="nav-logo-img">
+            </a>
+            
+            <div class="nav-menu">
+                <ul class="nav-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="whitepaper.html">Whitepaper</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="donate.html">Donate to SUDX</a></li>
+                    <li><a href="liquidity.html">Fund Liquidity</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="/#community">Community</a></li>
+                    <li><a href="#" id="connectWalletBtnDesktop" class="btn btn-nav btn-desktop">Connect Wallet</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-actions">
+                <a href="#" id="connectWalletBtnMobile" class="btn btn-nav btn-mobile">Connect Wallet</a>
+                <div class="hamburger">
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                </div>
+            </div>
         </div>
     </nav>
 
@@ -105,6 +120,7 @@
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/5.7.2/ethers.umd.min.js"></script>
     <script src="wallet.js"></script>
+    <script src="nav.js"></script>
 
 </body>
 </html>

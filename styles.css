@@ -39,33 +39,6 @@ body {
     overflow-x: hidden; /* Prevents horizontal scroll caused by some effects */
 }
 
-/* Animated Scanline Effect (STRONGER) - DISABLED FOR PERFORMANCE
-body::after {
-    content: ' ';
-    display: block;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to bottom, rgba(18, 16, 16, 0) 0%, rgba(0, 0, 0, 0.5) 50%, rgba(18, 16, 16, 0) 100%);
-    background-size: 100% 6px; 
-    animation: scanline 6s linear infinite;
-    z-index: 9999;
-    pointer-events: none;
-    opacity: 0.6; 
-}
-
-@keyframes scanline {
-    0% {
-        background-position: 0 0;
-    }
-    100% {
-        background-position: 0 100vh;
-    }
-}
-*/
-
 .container {
     max-width: 1100px;
     margin: 0 auto;
@@ -116,7 +89,6 @@ h1 {
     margin-top: 40px;
 }
 
-/* Cyberpunk Style Button */
 .btn {
     display: inline-block;
     padding: 12px 30px;
@@ -151,47 +123,39 @@ h1 {
     box-shadow: 0 0 20px var(--primary-glow-color), 0 0 30px var(--primary-glow-color);
 }
 
-/* Panel with angular borders and decorative corners */
 .panel {
-    background-color: rgba(21, 0, 42, 0.85); /* Panel background with transparency */
+    background-color: rgba(21, 0, 42, 0.85);
     padding: 40px;
     border: 1px solid var(--primary-glow-color);
     position: relative;
     box-shadow: inset 0 0 15px rgba(160, 32, 240, 0.5);
     clip-path: polygon(
-        0% 20px, /* Top-left corner */
-        20px 0%,
-        calc(100% - 20px) 0%,
-        100% 20px,
-        100% calc(100% - 20px),
-        calc(100% - 20px) 100%,
-        20px 100%,
-        0% calc(100% - 20px)
+        0% 20px, 20px 0%, calc(100% - 20px) 0%, 100% 20px, 100% calc(100% - 20px),
+        calc(100% - 20px) 100%, 20px 100%, 0% calc(100% - 20px)
     );
 }
 
-/* Decorative corners (STRONGER) */
 .panel::before, .panel::after {
     content: '';
     position: absolute;
-    width: 40px; /* Increased size */
-    height: 40px; /* Increased size */
+    width: 40px;
+    height: 40px;
     border-color: var(--secondary-glow-color);
     border-style: solid;
-    opacity: 1.0; /* Maximum opacity */
+    opacity: 1.0;
     box-shadow: var(--secondary-glow);
 }
 
 .panel::before {
     top: -10px;
     left: -10px;
-    border-width: 4px 0 0 4px; /* Thicker border */
+    border-width: 4px 0 0 4px;
 }
 
 .panel::after {
     bottom: -10px;
     right: -10px;
-    border-width: 0 4px 4px 0; /* Thicker border */
+    border-width: 0 4px 4px 0;
 }
 
 .panel h2 {
@@ -229,7 +193,6 @@ code {
     margin-top: 60px;
 }
 
-/* Card with simple border */
 .feature-card {
     background: transparent;
     border: 1px solid var(--primary-glow-color);
@@ -254,7 +217,6 @@ code {
     font-size: 1rem;
 }
 
-/* Navigation */
 .main-nav {
     position: sticky;
     top: 0;
@@ -268,12 +230,11 @@ code {
 
 .nav-container {
     display: flex;
-    justify-content: center; /* Center the main content (the links) */
+    justify-content: space-between;
     align-items: center;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
-    position: relative; /* Required for absolute positioning of the button */
 }
 
 .nav-links {
@@ -282,6 +243,7 @@ code {
     gap: 30px;
     margin: 0;
     padding: 0;
+    align-items: center;
 }
 
 .nav-links a {
@@ -291,6 +253,7 @@ code {
     font-weight: 700;
     font-size: 1rem;
     transition: all 0.2s ease;
+    white-space: nowrap;
 }
 
 .nav-links a:hover {
@@ -299,13 +262,10 @@ code {
 }
 
 .btn-nav {
-    position: absolute; /* Position independently from the links */
-    right: -40px; /* Increased from 20px to create more space */
     padding: 8px 20px;
     font-size: 0.9rem;
 }
 
-/* Footer */
 footer {
     text-align: center;
     padding: 40px 20px;
@@ -340,21 +300,6 @@ footer {
     font-size: 0.9rem;
 }
 
-/* Other adjustments */
-.tokenomics-chart-container {
-    width: 100%;
-    max-width: 450px;
-    height: 450px;
-    margin: 50px auto;
-    position: relative;
-}
-
-.roadmap-item.completed {
-    color: var(--secondary-glow-color);
-    text-decoration: line-through;
-    opacity: 0.6;
-}
-
 .cursor {
     display: inline-block;
     width: 1rem;
@@ -371,45 +316,6 @@ footer {
     50% { background-color: var(--primary-glow-color); box-shadow: var(--primary-glow); }
 }
 
-/* Responsiveness */
-@media (max-width: 768px) {
-    body {
-        font-size: 16px;
-    }
-
-    h1 {
-        font-size: 2.5rem;
-    }
-
-    .slogan {
-        font-size: 1.2rem;
-    }
-
-    .nav-links {
-        display: none; /* Simplifies for mobile, can be a hamburger menu later */
-    }
-
-    .btn-nav {
-        position: static;
-        margin-top: 10px;
-    }
-
-    .panel {
-        padding: 25px;
-        clip-path: none; /* Removes complex clip-path on smaller screens */
-        border-radius: 10px; /* Uses rounded borders as a fallback */
-    }
-
-    .panel::before, .panel::after {
-        display: none; /* Hides decorative corners on mobile */
-    }
-}
-
-/* =============================================== */
-/* Styles for the New Analytics Dashboard          */
-/* =============================================== */
-
-/* Grid for Main Stats */
 .stats-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -450,10 +356,9 @@ footer {
     line-height: 1.2;
 }
 
-/* Styles for Data Tables */
 .table-container {
     width: 100%;
-    overflow-x: auto; /* Allows horizontal scroll on small screens */
+    overflow-x: auto;
     border: 1px solid var(--primary-glow-color);
     background-color: rgba(21, 0, 42, 0.8);
     padding: 10px;
@@ -462,7 +367,7 @@ footer {
 table {
     width: 100%;
     border-collapse: collapse;
-    min-width: 600px; /* Ensures the table has a minimum width */
+    min-width: 600px;
 }
 
 thead {
@@ -499,47 +404,8 @@ td {
     vertical-align: middle;
 }
 
-td .buy {
-    color: #00FF00; /* Green for buys */
-    text-shadow: 0 0 5px #00FF00;
-}
-
-td .sell {
-    color: #FF0000; /* Red for sells */
-    text-shadow: 0 0 5px #FF0000;
-}
-
-/* Links within the table */
-td a {
-    color: var(--secondary-glow-color);
-    text-decoration: none;
-    transition: text-shadow 0.2s ease;
-}
-
-td a:hover {
-    text-shadow: var(--secondary-glow);
-}
-
-/* Loading/empty message in the table */
-.table-loading-row td {
-    text-align: center;
-    padding: 40px;
-    color: var(--text-color-darker);
-    font-style: italic;
-}
-
-/* Style for project addresses to prevent overflow */
-.project-address code {
-    display: inline-block;
-    max-width: 100%;
-    overflow-wrap: break-word;
-    word-break: break-all;
-    white-space: normal;
-}
-
-/* Message for wallet connection status */
 .wallet-status-message {
-    display: none; /* Hidden by default, controlled by JS */
+    display: none;
     text-align: center;
     padding: 15px;
     margin: 20px auto 30px auto;
@@ -549,32 +415,6 @@ td a:hover {
     font-family: 'Share Tech Mono', monospace;
     box-shadow: inset 0 0 10px rgba(0, 255, 255, 0.2);
 }
-
-/* Styles for Team Section */
-.team-bio {
-    font-size: 0.95rem;
-    color: var(--text-color-darker);
-    margin-top: 15px;
-}
-
-.team-links {
-    margin-top: 20px;
-}
-
-.team-links a {
-    color: var(--secondary-glow-color);
-    text-decoration: none;
-    font-weight: bold;
-    margin: 0 10px;
-}
-
-.team-links a:hover {
-    text-decoration: underline;
-}
-
-/* =============================================== */
-/* Styles for the FAQ Page                         */
-/* =============================================== */
 
 .faq-item {
     margin-bottom: 40px;
@@ -596,11 +436,156 @@ td a:hover {
     line-height: 1.8;
 }
 
-.faq-item p strong {
-    color: #fff;
-    font-weight: bold;
+/* =============================================== */
+/* Hamburger Menu & Mobile Navigation (NEW)        */
+/* =============================================== */
+
+.nav-logo-link {
+    display: flex;
+    align-items: center;
+    z-index: 10;
 }
 
-.faq-item code {
-    font-size: 1rem;
+.nav-logo-img {
+    height: 40px;
+    width: auto;
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.hamburger {
+    display: none;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.hamburger .line {
+    width: 30px;
+    height: 3px;
+    background-color: var(--primary-glow-color);
+    margin: 6px 0;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-mobile {
+    display: none !important;
+}
+
+@media (max-width: 992px) {
+    .nav-container {
+        justify-content: space-between;
+    }
+
+    .nav-menu {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.95);
+        backdrop-filter: blur(10px);
+        transition: left 0.4s ease-in-out;
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+
+    .nav-links a {
+        font-size: 1.5rem;
+        padding: 10px 0;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .hamburger.active .line:nth-child(1) {
+        transform: rotate(-45deg) translate(-7px, 8px);
+    }
+    .hamburger.active .line:nth-child(2) {
+        opacity: 0;
+    }
+    .hamburger.active .line:nth-child(3) {
+        transform: rotate(45deg) translate(-7px, -8px);
+    }
+
+    .btn-desktop {
+        display: none !important;
+    }
+
+    .btn-mobile {
+        display: inline-block !important;
+    }
+    
+    .nav-links .btn-nav {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        font-size: 16px;
+    }
+
+    h1 {
+        font-size: 2.8rem;
+    }
+    
+    .cursor {
+        height: 2.8rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    .slogan {
+        font-size: 1.2rem;
+    }
+
+    .panel {
+        padding: 25px;
+        clip-path: none;
+        border-radius: 10px;
+    }
+
+    .panel::before, .panel::after {
+        display: none;
+    }
+
+    .container {
+        padding: 20px 15px;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .btn {
+        width: 80%;
+        max-width: 300px;
+        text-align: center;
+        margin: 5px 0;
+    }
+    
+    code {
+        word-break: break-all;
+    }
 }
