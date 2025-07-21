@@ -74,9 +74,18 @@
                 <div id="wallet-message" class="wallet-status-message">
                     Please connect your wallet to enable the donation button.
                 </div>
+
+                <!-- Donation Input -->
+                <div class="donation-input-group">
+                    <label for="donationAmount">Amount to Donate (SUDX)</label>
+                    <input type="number" id="donationAmount" class="input-field" placeholder="e.g., 1000">
+                </div>
+
                 <div class="cta-buttons">
                     <button id="donateToSUDXBtn" class="btn">Donate SUDX</button>
                 </div>
+                <div id="donation-status" class="status-message" style="display: none;"></div>
+
                 <p class="section-text" style="margin-top: 30px; font-size: 1.1rem;">
                     Official DAO Treasury Address:<br>
                     <code style="overflow-wrap: break-word; word-break: break-all; white-space: normal;">0xA5dEa0A7E9c47d52e735c1d4129Cc02a54966E21</code>
@@ -100,6 +109,7 @@
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/5.7.2/ethers.umd.min.js"></script>
     <script src="wallet.js"></script>
+    <script src="donate.js" defer></script>
     <script src="nav.js"></script>
     <script src="tracking.js" defer></script>
 
