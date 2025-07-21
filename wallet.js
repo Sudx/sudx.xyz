@@ -17,7 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let userAddress;
 
     // --- UI ELEMENTS ---
-    const connectWalletBtn = document.getElementById('connectWalletBtn');
+    const connectWalletBtnDesktop = document.getElementById('connectWalletBtnDesktop');
+    const connectWalletBtnMobile = document.getElementById('connectWalletBtnMobile');
     const walletMessage = document.getElementById('wallet-message');
     const donateToSUDXBtn = document.getElementById('donateToSUDXBtn');
     const donateUSDCBtn = document.getElementById('donateUSDCBtn');
@@ -25,10 +26,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- UI UPDATE LOGIC ---
 
     function updateUI() {
+        const buttons = [connectWalletBtnDesktop, connectWalletBtnMobile].filter(btn => btn); // Filter out nulls
+
         if (userAddress) {
             // Connected State
-            connectWalletBtn.textContent = `${userAddress.substring(0, 6)}...${userAddress.substring(userAddress.length - 4)}`;
-            connectWalletBtn.disabled = true;
+            const shortAddress = `${userAddress.substring(0, 6)}...${userAddress.substring(userAddress.length - 4)}`;
+            buttons.forEach(btn => {
+                btn.textContent = shortAddress;
+                btn.disabled = true;
+            });
+
             if (walletMessage) {
                 walletMessage.style.display = 'none';
             }
@@ -40,8 +47,11 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         } else {
             // Disconnected State
-            connectWalletBtn.textContent = 'Connect Wallet';
-            connectWalletBtn.disabled = false;
+            buttons.forEach(btn => {
+                btn.textContent = 'Connect Wallet';
+                btn.disabled = false;
+            });
+
             if (walletMessage) {
                 walletMessage.style.display = 'block';
             }
@@ -70,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
             alert('You must connect your wallet to proceed.');
         }
     }
-
+    
     async function handleAccountsChanged(accounts) {
         if (accounts.length === 0) {
             userAddress = null;
@@ -122,10 +132,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- INITIALIZATION ---
+    
+    const allConnectButtons = [connectWalletBtnDesktop, connectWalletBtnMobile].filter(btn => btn);
+    allConnectButtons.forEach(btn => btn.addEventListener('click', connectWallet));
 
-    if (connectWalletBtn) {
-        connectWalletBtn.addEventListener('click', connectWallet);
-    }
     if (donateToSUDXBtn) {
         donateToSUDXBtn.addEventListener('click', () => handleDonation(sudxTokenAddress, 'SUDX', tokenABI, sudxDaoTreasuryAddress));
     }
