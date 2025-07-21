@@ -72,11 +72,19 @@
                     A deep liquidity pool is vital for a healthy market. It reduces price volatility (slippage) during trades and provides confidence for larger investors. By donating USDC, you help us create a more stable SUDX/USDC trading pair on decentralized exchanges like QuickSwap.
                 </p>
                 <div id="wallet-message" class="wallet-status-message">
-                    Please connect your wallet to enable the donation button.
+                    Please connect your wallet to enable the funding button.
                 </div>
+
+                <!-- Donation Input -->
+                <div class="donation-input-group">
+                    <label for="usdcAmount">Amount to Fund (USDC)</label>
+                    <input type="number" id="usdcAmount" class="input-field" placeholder="e.g., 100">
+                </div>
+
                 <div class="cta-buttons">
-                    <button id="donateUSDCBtn" class="btn">Donate USDC</button>
+                    <button id="donateUSDCBtn" class="btn">Fund with USDC</button>
                 </div>
+                <div id="funding-status" class="status-message" style="display: none;"></div>
                 <p class="section-text" style="margin-top: 30px; font-size: 1.1rem;">
                     All contributions are sent to the official SUDX liquidity fund address:<br>
                     <code style="overflow-wrap: break-word; word-break: break-all; white-space: normal;">0xffC666cD50a6250CDc83E44C5f6e57Ec6f6074b4</code>
@@ -101,6 +109,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/5.7.2/ethers.umd.min.js"></script>
     <script src="wallet.js"></script>
     <script src="nav.js"></script>
+    <script src="liquidity.js" defer></script>
     <script src="tracking.js" defer></script>
 
 </body>
