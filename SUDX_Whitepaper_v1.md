@@ -222,9 +222,10 @@ SUDX is built by the community, for the community. Connect, contribute ideas, an
 | :--- | :--- |
 | **SUDX Token Contract** | `0xc56F971934961267586e8283C06018167F0D0E4C` |
 | **Official DAO Treasury** | `0xA5dEa0A7E9c47d52e735c1d4129Cc02a54966E21` |
-| **Team Vesting Contract** | `0xc56f971934961267586e8283c06018167f0d0e4c` |
-| **Ecosystem Fund Wallet** | `0x891D5fF7A74A605334292553B1eeD38fBC4` |
-| **Project Operations Wallet** | `0x0aE53A572274a40685256E8a4823e6f896CBF05` |
+| **Team Token Vesting Lock** | The team's tokens are locked in a public contract by UNCX. The address shown is for the SUDX token itself, as the lock is applied to it. [Verify on UNCX](https://app.uncx.network/lockers/token/chain/137/address/0xc56f971934961267586e8283c06018167f0d0e4c). |
+| **Ecosystem Fund Wallet** | `0x891D5fF7A74A605334292553B1eeD38fBC4...` **(Address is incomplete, please correct)** |
+| **Project Operations Wallet** | `0x0aE53A572274a40685256E8a4823e6f896CBF05...` **(Address is incomplete, please correct)** |
+| **Liquidity Fund Wallet** | `0xffC666cD50a6250CDc83E44C5f6e57Ec6f6074b4` |
 | **Quote Token (USDC)** | `0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359` |
 
 ---

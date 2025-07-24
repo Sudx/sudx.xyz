@@ -117,14 +117,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /**
-     * Displays the table of active liquidity pools.
+     * Displays the table of active liquidity pools. (SAFE VERSION)
      * @param {Array} pairs The list of pairs from the API.
      */
     function displayPoolsTable(pairs) {
         poolsTableBody.innerHTML = ''; // Clear the table
 
         if (pairs.length === 0) {
-            poolsTableBody.innerHTML = '<tr><td colspan="5" style="text-align: center;">No active pools found.</td></tr>';
+            const row = poolsTableBody.insertRow();
+            const cell = row.insertCell();
+            cell.colSpan = 5;
+            cell.style.textAlign = 'center';
+            cell.textContent = 'No active pools found.';
             return;
         }
 
@@ -132,24 +136,37 @@ document.addEventListener('DOMContentLoaded', () => {
         const sortedPairs = pairs.sort((a, b) => b.liquidity.usd - a.liquidity.usd);
 
         sortedPairs.forEach(pair => {
-            const row = document.createElement('tr');
-            row.innerHTML = `
-                <td>
-                    <a href="${pair.url}" target="_blank" rel="noopener noreferrer">
-                        ${pair.baseToken.symbol}/${pair.quoteToken.symbol}
-                    </a>
-                </td>
-                <td>${pair.dexId}</td>
-                <td>${formatCurrencyShort(pair.liquidity.usd)}</td>
-                <td>${formatCurrencyShort(pair.volume.h24)}</td>
-                <td>${formatPrice(parseFloat(pair.priceUsd))}</td>
-            `;
-            poolsTableBody.appendChild(row);
+            const row = poolsTableBody.insertRow();
+            
+            // Pair/Link Cell
+            const cell1 = row.insertCell();
+            const link = document.createElement('a');
+            link.href = pair.url;
+            link.target = '_blank';
+            link.rel = 'noopener noreferrer';
+            link.textContent = `${pair.baseToken.symbol}/${pair.quoteToken.symbol}`;
+            cell1.appendChild(link);
+
+            // DEX ID Cell
+            const cell2 = row.insertCell();
+            cell2.textContent = pair.dexId;
+
+            // Liquidity Cell
+            const cell3 = row.insertCell();
+            cell3.textContent = formatCurrencyShort(pair.liquidity.usd);
+
+            // Volume Cell
+            const cell4 = row.insertCell();
+            cell4.textContent = formatCurrencyShort(pair.volume.h24);
+
+            // Price Cell
+            const cell5 = row.insertCell();
+            cell5.textContent = formatPrice(parseFloat(pair.priceUsd));
         });
     }
     
     /**
-     * Fetches and displays the most recent swaps from the main pools.
+     * Fetches and displays the most recent swaps from the main pools. (SAFE VERSION)
      * @param {Array} pairs The list of pairs from the API.
      */
     async function fetchAndDisplaySwaps(pairs) {
@@ -175,7 +192,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if (allSwaps.length === 0) {
-            swapsTableBody.innerHTML = '<tr><td colspan="5" style="text-align: center;">No recent swaps found.</td></tr>';
+            const row = swapsTableBody.insertRow();
+            const cell = row.insertCell();
+            cell.colSpan = 5;
+            cell.style.textAlign = 'center';
+            cell.textContent = 'No recent swaps found.';
             return;
         }
 
@@ -187,15 +208,28 @@ document.addEventListener('DOMContentLoaded', () => {
             const tokenSymbol = swap.pair.baseToken.symbol;
             const amountToken = parseFloat(swap.amount0 > swap.amount1 ? swap.amount0 : swap.amount1).toFixed(2);
             
-            const row = document.createElement('tr');
-            row.innerHTML = `
-                <td class="${isBuy ? 'buy' : 'sell'}">${isBuy ? 'BUY' : 'SELL'}</td>
-                <td>${formatCurrency(swap.amountUsd)}</td>
-                <td>${amountToken} ${tokenSymbol}</td>
-                <td>${swap.pair.dexId}</td>
-                <td>${new Date(swap.timestamp).toLocaleTimeString()}</td>
-            `;
-            swapsTableBody.appendChild(row);
+            const row = swapsTableBody.insertRow();
+
+            // Type Cell
+            const cell1 = row.insertCell();
+            cell1.className = isBuy ? 'buy' : 'sell';
+            cell1.textContent = isBuy ? 'BUY' : 'SELL';
+
+            // Value Cell
+            const cell2 = row.insertCell();
+            cell2.textContent = formatCurrency(swap.amountUsd);
+
+            // Tokens Cell
+            const cell3 = row.insertCell();
+            cell3.textContent = `${amountToken} ${tokenSymbol}`;
+
+            // Exchange Cell
+            const cell4 = row.insertCell();
+            cell4.textContent = swap.pair.dexId;
+
+            // Time Cell
+            const cell5 = row.insertCell();
+            cell5.textContent = new Date(swap.timestamp).toLocaleTimeString();
         });
     }
 
