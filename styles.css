@@ -436,6 +436,98 @@ td {
     line-height: 1.8;
 }
 
+.faq-list {
+    padding-left: 20px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.faq-list li {
+    margin-bottom: 15px;
+    color: var(--text-color-darker);
+}
+
+.faq-list li::marker {
+    color: var(--secondary-glow-color);
+    font-weight: bold;
+}
+
+/* =============================================== */
+/* Donation Page Styles (NEW)                      */
+/* =============================================== */
+
+.donation-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+}
+
+@media (min-width: 992px) {
+    .donation-container {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.form-group {
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    font-family: 'Orbitron', sans-serif;
+    color: var(--primary-glow-color);
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.input-field {
+    width: 100%;
+    padding: 15px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border: 1px solid var(--primary-glow-color);
+    color: var(--text-color);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 1.2rem;
+    border-radius: 0;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+    clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 15px 100%, 0 calc(100% - 15px));
+}
+
+.input-field:focus {
+    outline: none;
+    border-color: var(--secondary-glow-color);
+    box-shadow: 0 0 15px var(--secondary-glow-color);
+}
+
+.status-message {
+    text-align: center;
+    padding: 15px;
+    margin-top: 20px;
+    border: 1px dashed;
+    font-family: 'Share Tech Mono', monospace;
+    word-wrap: break-word;
+}
+
+.address-info {
+    margin-top: 30px;
+    font-size: 1rem;
+    text-align: center;
+    color: var(--text-color-darker);
+}
+
+.address-info code {
+    display: block;
+    margin-top: 5px;
+    font-size: 0.9rem;
+    overflow-wrap: break-word;
+    word-break: break-all;
+    white-space: normal;
+    padding: 8px;
+}
+
+
 /* =============================================== */
 /* Hamburger Menu & Mobile Navigation (NEW)        */
 /* =============================================== */

@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SUDX | Donate to Open Source Projects</title>
-    <meta name="description" content="Support open-source projects directly with SUDX. Your contribution empowers developers to build the future of free software.">
+    <title>SUDX | Donate & Fund</title>
+    <meta name="description" content="Support the SUDX project by donating to the ecosystem or contributing to the liquidity pool. Your support empowers the future of open-source funding.">
     <link rel="icon" href="assets/icon-final-monogram.svg" type="image/svg+xml">
     <link rel="icon" type="image/png" href="assets/bitmap192-192.png" sizes="192x192">
     <link rel="apple-touch-icon" href="assets/bitmap192-192.png">
-    <!-- Preconnect to Google Fonts for better performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
@@ -32,22 +31,19 @@
     <nav class="main-nav">
         <div class="nav-container">
             <a href="/" class="nav-logo-link">
-                <img src="assets/icon-final-monogram.svg" alt="SUDX Logo" class="nav-logo-img">
+                <img src="assets/principal.svg" alt="SUDX Logo" class="nav-logo-img">
             </a>
-            
             <div class="nav-menu">
                 <ul class="nav-links">
                     <li><a href="/">Home</a></li>
                     <li><a href="whitepaper.html">Whitepaper</a></li>
                     <li><a href="dashboard.html">Dashboard</a></li>
-                    <li><a href="donate.html">Donate to SUDX</a></li>
-                    <li><a href="liquidity.html">Fund Liquidity</a></li>
+                    <li><a href="donate.html">Donate</a></li>
                     <li><a href="faq.html">FAQ</a></li>
                     <li><a href="/#community">Community</a></li>
                     <li><a href="#" id="connectWalletBtnDesktop" class="btn btn-nav btn-desktop">Connect Wallet</a></li>
                 </ul>
             </div>
-
             <div class="nav-actions">
                 <a href="#" id="connectWalletBtnMobile" class="btn btn-nav btn-mobile">Connect Wallet</a>
                 <div class="hamburger">
@@ -60,45 +56,61 @@
     </nav>
 
     <header class="container">
-        <h1>Support the SUDX Project<span class="cursor"></span></h1>
-        <p class="slogan">Your donation directly funds the future of SUDX.</p>
+        <h1>Support SUDX<span class="cursor"></span></h1>
+        <p class="slogan">Choose how you want to empower the ecosystem.</p>
     </header>
 
     <div class="container">
-        <section id="donation-panel">
-            <div class="panel">
-                <h2>Help Build the Ecosystem</h2>
-                <p class="section-text">
-                    By donating SUDX, you are directly contributing to the project's growth. Your support helps fund development, marketing, community initiatives, and future liquidity pools. All donations are sent to the official SUDX DAO Treasury, which is governed by the community.
-                </p>
-                <div id="wallet-message" class="wallet-status-message">
-                    Please connect your wallet to enable the donation button.
-                </div>
+        <div id="wallet-message" class="wallet-status-message" style="display: block;">
+            Please connect your wallet to enable funding options.
+        </div>
 
-                <!-- Donation Input -->
-                <div class="donation-input-group">
+        <div class="donation-container">
+            <!-- Option 1: Donate to the Project -->
+            <div class="panel">
+                <h2>1. Donate to the Ecosystem</h2>
+                <p class="section-text">
+                    Donate SUDX directly to the DAO Treasury. These funds support development, marketing, and community initiatives, governed by token holders.
+                </p>
+                <div class="form-group">
                     <label for="donationAmount">Amount to Donate (SUDX)</label>
                     <input type="number" id="donationAmount" class="input-field" placeholder="e.g., 1000">
                 </div>
-
                 <div class="cta-buttons">
                     <button id="donateToSUDXBtn" class="btn">Donate SUDX</button>
                 </div>
                 <div id="donation-status" class="status-message" style="display: none;"></div>
-
-                <p class="section-text" style="margin-top: 30px; font-size: 1.1rem;">
-                    Official DAO Treasury Address:<br>
-                    <code style="overflow-wrap: break-word; word-break: break-all; white-space: normal;">0xA5dEa0A7E9c47d52e735c1d4129Cc02a54966E21</code>
+                <p class="address-info">
+                    DAO Treasury: <code>0xA5dEa0A7E9c47d52e735c1d4129Cc02a54966E21</code>
                 </p>
             </div>
-        </section>
+
+            <!-- Option 2: Fund Liquidity -->
+            <div class="panel">
+                <h2>2. Fund the Liquidity Pool</h2>
+                <p class="section-text">
+                    Donate USDC to the Liquidity Fund. This strengthens the SUDX/USDC pool, reducing price volatility and creating a more stable market for everyone.
+                </p>
+                <div class="form-group">
+                    <label for="usdcAmount">Amount to Fund (USDC)</label>
+                    <input type="number" id="usdcAmount" class="input-field" placeholder="e.g., 100">
+                </div>
+                <div class="cta-buttons">
+                    <button id="donateUSDCBtn" class="btn">Fund with USDC</button>
+                </div>
+                <div id="funding-status" class="status-message" style="display: none;"></div>
+                <p class="address-info">
+                    Liquidity Fund: <code>0xffC666cD50a6250CDc83E44C5f6e57Ec6f6074b4</code>
+                </p>
+            </div>
+        </div>
     </div>
 
     <footer>
         <div class="container">
             <img src="assets/icon-final-monogram.svg" alt="SUDX Logo" class="footer-logo">
             <div class="footer-links">
-                <a id="contractLink" href="https://polygonscan.com/token/0xc56F971934961267586e8283C06018167F0D0E4C" target="_blank" rel="noopener noreferrer">Contract</a>
+                <a href="https://polygonscan.com/token/0xc56F971934961267586e8283C06018167F0D0E4C" target="_blank" rel="noopener noreferrer">Contract</a>
                 <a href="https://app.uncx.network/lockers/token/chain/137/address/0xc56f971934961267586e8283c06018167f0d0e4c" target="_blank" rel="noopener noreferrer">Team Vesting</a>
                 <a href="https://app.uncx.network/lockers/univ2/chain/137/address/0x884c355bdd0332abbbf3bf7ca3f68029ae500030" target="_blank" rel="noopener noreferrer">Liquidity Locked</a>
                 <a href="mailto:sudx.oficial@gmail.com">Contact</a>
