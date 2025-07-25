@@ -591,6 +591,40 @@ td {
 }
 
 /* =============================================== */
+/* Dashboard Specific Styles (NEW/MODIFIED)        */
+/* =============================================== */
+
+.stat-card p {
+    word-wrap: break-word; /* Quebra palavras longas */
+    word-break: break-all; /* Força a quebra para evitar overflow */
+    font-size: 1.8rem; /* Tamanho de fonte um pouco menor para dar mais espaço */
+}
+
+.table-container a {
+    color: var(--secondary-glow-color);
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.table-container a:hover {
+    color: #fff;
+    text-shadow: 0 0 10px var(--secondary-glow-color);
+}
+
+#swaps-table-body .buy {
+    color: #00ff00; /* Verde neon para compras */
+    text-shadow: 0 0 5px #00ff00;
+    font-weight: bold;
+}
+
+#swaps-table-body .sell {
+    color: #ff0000; /* Vermelho neon para vendas */
+    text-shadow: 0 0 5px #ff0000;
+    font-weight: bold;
+}
+
+
+/* =============================================== */
 /* Tokenomics Section (NEW)                        */
 /* =============================================== */
 

@@ -145,6 +145,8 @@ document.addEventListener('DOMContentLoaded', () => {
             link.target = '_blank';
             link.rel = 'noopener noreferrer';
             link.textContent = `${pair.baseToken.symbol}/${pair.quoteToken.symbol}`;
+            // Apply a class for proper styling from styles.css
+            link.className = 'table-link'; 
             cell1.appendChild(link);
 
             // DEX ID Cell
