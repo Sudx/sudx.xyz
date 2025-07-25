@@ -113,7 +113,21 @@ The total supply allocation is as follows:
 
 ---
 
-### 4.1. Trust and Alignment Mechanisms
+### 4.1. Token Distribution Status: A Transparent Overview
+
+On-chain analysis reveals that a significant portion of the SUDX supply is held in wallets controlled by the project. This is a deliberate and temporary measure, designed to ensure the security, stability, and long-term success of the ecosystem. The following table provides a detailed, transparent breakdown of the current status of each token allocation.
+
+| Allocation | Percentage | Total Tokens | Current Status & Rationale |
+| :--- | :--- | :--- | :--- |
+| **Ecosystem Fund** | 45% | 1,260,000,000 | **Held in a secure, community-owned Safe.** Following security best practices, these funds are not stored directly in a "hot" DAO contract. They will be transferred in tranches to the Aragon DAO's Operational Treasury based on community-approved governance proposals. This protects the main fund from potential smart contract exploits. |
+| **Liquidity Pool** | ~24.95% | 698,524,836 | **Initial liquidity created; remainder held for expansion.** As a self-funded project, a strategic initial liquidity pool of 5,000,000 SUDX was created. The remaining tokens are held in a dedicated, publicly-known wallet, ready to be deployed to deepen liquidity as the project matures and as directed by the DAO. |
+| **Team & Founders** | 15% | 420,000,000 | **Locked in a public, time-locked vesting contract.** These tokens are inaccessible and are released linearly over 3 years after a 12-month cliff, ensuring the team's long-term commitment. This is verifiable on-chain. |
+| **Marketing & Partnerships** | 10% | 280,000,000 | **Held in a dedicated project wallet.** These funds are reserved for strategic initiatives to grow the SUDX ecosystem, such as exchange listings and partnerships. Their use will be transparent and aligned with the project's roadmap. |
+| **Strategic Treasury** | 5% | 140,000,000 | **Held in a dedicated project wallet, under future DAO control.** This reserve is set aside for unforeseen opportunities and will ultimately be governed by the SUDX DAO, acting as a final backstop for the project's health. |
+
+This phased and security-conscious approach to distribution ensures that the project has the resources to execute its vision while protecting the community's assets from unnecessary risks. Full decentralization of these funds will occur progressively as the DAO matures and governance processes are solidified.
+
+### 4.2. Trust and Alignment Mechanisms
 
 To ensure the stability of the project and protect the interests of the community, we will implement the following mechanisms:
 
@@ -127,9 +141,9 @@ To ensure the stability of the project and protect the interests of the communit
     *   **Cliff Period:** No tokens will be released in the first **12 months** after launch.
     *   **Linear Release Period:** After the cliff, the tokens will be distributed in equal monthly installments over **24 months (2 years)**.
     *   **Objective:** This schedule ensures that the founding team is fully incentivized to work for the long-term success of the project, preventing a massive token sale that could destabilize the price.
-    *   **Status (2025-07-09):** ✅ **Completed.** The full amount has been locked in a 3-year vesting contract on the UNCX Network. The vesting contract can be publicly verified [here](https://app.uncx.network/lockers/token/chain/137/address/0xc56f971934961267586e8283c06018167f0d0e4c).
+    *   **Status (2025-07-09):** ✅ **Completed.** The full amount has been locked in a 3-year vesting contract on the UNCX Network. The vesting contract can be publicly verified [here](https.app.uncx.network/lockers/token/chain/137/address/0xc56f971934961267586e8283c06018167f0d0e4c).
 
-### 4.2. Hypothetical Growth Scenarios for Investors
+### 4.3. Hypothetical Growth Scenarios for Investors
 
 To illustrate the potential of the SUDX ecosystem, this section presents a hypothetical simulation based on a sample investment. This is not a promise of returns but a model to demonstrate how the value of an investment could evolve as the project reaches different market capitalization milestones.
 
