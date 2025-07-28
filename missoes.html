@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SUDX Airdrop Missions</title>
+    <meta name="description" content="Complete missions to earn your SUDX airdrop. Join the SUDX community and get rewarded.">
+    <link rel="icon" href="assets/principal.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="missoes.css">
+</head>
+<body>
+
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="/" class="nav-logo-link">
+                <img src="assets/principal.svg" alt="SUDX Logo" class="nav-logo-img">
+            </a>
+            <div class="nav-menu">
+                <ul class="nav-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="whitepaper.html">Whitepaper</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="donate.html">Donate</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="missoes.html">Airdrop</a></li>
+                </ul>
+            </div>
+            <div class="hamburger">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="container">
+        <h1>Airdrop Missions<span class="cursor"></span></h1>
+        <p class="slogan">Complete tasks, join the community, and earn SUDX.</p>
+    </header>
+
+    <div class="container">
+        <section id="missions">
+            <div class="panel">
+                <h2>Complete these missions to be eligible for the 100 Million SUDX Airdrop!</h2>
+                
+                <div class="missions-grid">
+                    <!-- Mission 1: Follow on X -->
+                    <div class="mission-card">
+                        <h3>Mission 1: Follow on X (Twitter)</h3>
+                        <p>Follow our official account to stay updated.</p>
+                        <a href="https://x.com/SudxOfficial" target="_blank" rel="noopener noreferrer" class="btn">Follow on X</a>
+                    </div>
+
+                    <!-- Mission 2: Like a Post -->
+                    <div class="mission-card">
+                        <h3>Mission 2: Like a specific Post</h3>
+                        <p>Show your support by liking our pinned post.</p>
+                        <a href="https://x.com/SudxOfficial/status/1234567890" target="_blank" rel="noopener noreferrer" class="btn">Like The Post</a>
+                    </div>
+
+                    <!-- Mission 3: Join Telegram -->
+                    <div class="mission-card">
+                        <h3>Mission 3: Join our Telegram</h3>
+                        <p>Become a part of our main community channel.</p>
+                        <a href="https://t.me/sudxcoin" target="_blank" rel="noopener noreferrer" class="btn">Join Telegram</a>
+                    </div>
+
+                    <!-- Mission 4: Follow on Reddit (Optional) -->
+                    <div class="mission-card optional">
+                        <h3>Optional Mission: Follow on Reddit</h3>
+                        <p>Follow our Subreddit for a higher chance to be the champion!</p>
+                        <a href="https://www.reddit.com/r/SudxLabs/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Follow on Reddit</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="submission">
+            <div class="panel">
+                <h2>Submit Your Proof</h2>
+                <p class="section-text">
+                    After completing the missions, fill out the form below to register for the airdrop. Winners will be verified manually.
+                </p>
+                <form id="mission-form">
+                    <div class="form-group">
+                        <label for="walletAddress">Your Polygon (MATIC) Wallet Address</label>
+                        <input type="text" id="walletAddress" name="walletAddress" class="input-field" placeholder="0x..." required>
+                    </div>
+                    <div class="form-group">
+                        <label for="xUsername">Your X (Twitter) Username</label>
+                        <input type="text" id="xUsername" name="xUsername" class="input-field" placeholder="@your_username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="telegramUsername">Your Telegram Username</label>
+                        <input type="text" id="telegramUsername" name="telegramUsername" class="input-field" placeholder="@your_username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="redditUsername">Your Reddit Username (Optional)</label>
+                        <input type="text" id="redditUsername" name="redditUsername" class="input-field" placeholder="u/your_username">
+                    </div>
+                    <div class="cta-buttons">
+                        <button type="submit" class="btn">Submit for Airdrop</button>
+                    </div>
+                </form>
+                <div id="form-status" class="status-message" style="display: none;"></div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container">
+            <img src="assets/principal.svg" alt="SUDX Logo" class="footer-logo">
+            <div class="footer-links">
+                <a href="https://polygonscan.com/token/0xc56F971934961267586e8283C06018167F0D0E4C" target="_blank" rel="noopener noreferrer">Contract</a>
+                <a href="mailto:sudx.oficial@gmail.com">Contact</a>
+                <a href="privacy.html">Privacy Policy</a>
+            </div>
+            <p class="copyright">&copy; 2025 SUDX. Licensed under the MIT License.</p>
+        </div>
+    </footer>
+    
+    <script src="nav.js"></script>
+    <script src="missoes.js"></script>
+
+</body>
+</html>

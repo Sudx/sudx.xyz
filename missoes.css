@@ -1,0 +1,94 @@
+/* styles for missoes.html */
+
+.missions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.mission-card {
+    background: transparent;
+    border: 1px solid var(--primary-glow-color);
+    padding: 25px;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.mission-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(160, 32, 240, 0.2);
+}
+
+.mission-card h3 {
+    font-size: 1.4rem;
+    color: var(--secondary-glow-color);
+    margin-top: 0;
+    text-shadow: var(--secondary-glow);
+    flex-grow: 1;
+}
+
+.mission-card p {
+    color: var(--text-color-darker);
+    font-size: 1rem;
+    flex-grow: 1;
+}
+
+.mission-card.optional h3 {
+    color: var(--primary-glow-color);
+    text-shadow: var(--primary-glow);
+}
+
+.form-group {
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    font-family: 'Orbitron', sans-serif;
+    color: var(--primary-glow-color);
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.input-field {
+    width: 100%;
+    padding: 15px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border: 1px solid var(--primary-glow-color);
+    color: var(--text-color);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 1.2rem;
+    border-radius: 0;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+.input-field:focus {
+    outline: none;
+    border-color: var(--secondary-glow-color);
+    box-shadow: 0 0 15px var(--secondary-glow-color);
+}
+
+.status-message {
+    text-align: center;
+    padding: 15px;
+    margin-top: 20px;
+    border: 1px dashed;
+    font-family: 'Share Tech Mono', monospace;
+    word-wrap: break-word;
+    color: var(--secondary-glow-color);
+}
+
+.status-message.success {
+    color: #00ff00;
+    border-color: #00ff00;
+}
+
+.status-message.error {
+    color: #ff0000;
+    border-color: #ff0000;
+}
