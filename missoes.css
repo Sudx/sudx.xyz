@@ -22,6 +22,12 @@
     box-shadow: 0 5px 15px rgba(160, 32, 240, 0.2);
 }
 
+/* Highlight style for the main mission */
+.mission-card.highlighted {
+    border-color: var(--secondary-glow-color);
+    box-shadow: 0 0 15px var(--secondary-glow-color);
+}
+
 .mission-card h3 {
     font-size: 1.4rem;
     color: var(--secondary-glow-color);
@@ -34,12 +40,56 @@
     color: var(--text-color-darker);
     font-size: 1rem;
     flex-grow: 1;
+    margin-bottom: 20px;
 }
 
 .mission-card.optional h3 {
     color: var(--primary-glow-color);
     text-shadow: var(--primary-glow);
 }
+
+.mission-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.mission-actions .btn {
+    flex-grow: 1;
+    margin: 0;
+}
+
+.btn-confirm {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: var(--bg-color);
+    color: var(--primary-glow-color);
+    text-decoration: none;
+    font-weight: 700;
+    font-family: 'Orbitron', sans-serif;
+    text-transform: uppercase;
+    margin-top: auto; /* Pushes the button to the bottom */
+    transition: all 0.3s ease;
+    border: 2px solid var(--primary-glow-color);
+    cursor: pointer;
+}
+
+.btn-confirm:hover {
+    background-color: var(--primary-glow-color);
+    color: var(--bg-color);
+    box-shadow: 0 0 15px var(--primary-glow-color);
+}
+
+.btn-confirm.completed {
+    background-color: var(--secondary-glow-color);
+    color: var(--bg-color);
+    border-color: var(--secondary-glow-color);
+    box-shadow: 0 0 15px var(--secondary-glow-color);
+    cursor: not-allowed;
+    opacity: 0.8;
+}
+
 
 .form-group {
     margin-bottom: 25px;
@@ -52,6 +102,13 @@
     color: var(--primary-glow-color);
     margin-bottom: 10px;
     font-size: 1.1rem;
+}
+
+.required-star {
+    color: #ff0000; /* Neon Red */
+    text-shadow: 0 0 5px #ff0000, 0 0 10px #ff0000;
+    font-weight: bold;
+    margin-left: 5px;
 }
 
 .input-field {
@@ -71,6 +128,15 @@
     outline: none;
     border-color: var(--secondary-glow-color);
     box-shadow: 0 0 15px var(--secondary-glow-color);
+}
+
+#submit-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+    background-color: var(--bg-color);
+    color: var(--text-color-darker);
+    box-shadow: none;
+    border-color: var(--text-color-darker);
 }
 
 .status-message {

@@ -46,57 +46,61 @@
     <div class="container">
         <section id="missions">
             <div class="panel">
-                <h2>Complete these missions to be eligible for the 100 Million SUDX Airdrop!</h2>
+                <h2>Complete these missions to unlock the submission form.</h2>
                 
                 <div class="missions-grid">
-                    <!-- Mission 1: Follow on X -->
-                    <div class="mission-card">
-                        <h3>Mission 1: Follow on X (Twitter)</h3>
-                        <p>Follow our official account to stay updated.</p>
-                        <a href="https://x.com/SudxOfficial" target="_blank" rel="noopener noreferrer" class="btn">Follow on X</a>
+                    <!-- Mission 1: X (Twitter) - Highlighted -->
+                    <div class="mission-card highlighted" id="mission-x">
+                        <h3>Mission 1: Engage on X (Required)</h3>
+                        <p>Follow our page, then like and share the official airdrop post.</p>
+                        <div class="mission-actions">
+                            <a href="https://x.com/SudxOfficial" target="_blank" rel="noopener noreferrer" class="btn">1. Follow</a>
+                            <a href="https://x.com/SudxOfficial/status/1817532238133350438" target="_blank" rel="noopener noreferrer" class="btn">2. Like Post</a>
+                            <a href="https://x.com/intent/tweet?text=100,000,000%20%24SUDX%20Airdrop%20is%20LIVE!%0A%0ASupport%20open-source,%20earn%20crypto.%0A%0AClaim%20now%3A%20https%3A//linktr.ee/sudx.official%0A%0A%23Airdrop%20%23Crypto%20%23Web3%20%23SUDX" target="_blank" rel="noopener noreferrer" class="btn">3. Share</a>
+                        </div>
+                        <button class="btn-confirm" data-mission="x">Confirm Completion</button>
                     </div>
 
-                    <!-- Mission 2: Like a Post -->
-                    <div class="mission-card">
-                        <h3>Mission 2: Like a specific Post</h3>
-                        <p>Show your support by liking our pinned post.</p>
-                        <a href="https://x.com/SudxOfficial/status/1234567890" target="_blank" rel="noopener noreferrer" class="btn">Like The Post</a>
-                    </div>
-
-                    <!-- Mission 3: Join Telegram -->
-                    <div class="mission-card">
-                        <h3>Mission 3: Join our Telegram</h3>
+                    <!-- Mission 2: Join Telegram -->
+                    <div class="mission-card" id="mission-telegram">
+                        <h3>Mission 2: Join our Telegram (Required)</h3>
                         <p>Become a part of our main community channel.</p>
-                        <a href="https://t.me/sudxcoin" target="_blank" rel="noopener noreferrer" class="btn">Join Telegram</a>
+                        <div class="mission-actions">
+                            <a href="https://t.me/sudxcoin" target="_blank" rel="noopener noreferrer" class="btn">Join Telegram</a>
+                        </div>
+                        <button class="btn-confirm" data-mission="telegram">Confirm Completion</button>
                     </div>
 
-                    <!-- Mission 4: Follow on Reddit (Optional) -->
-                    <div class="mission-card optional">
+                    <!-- Mission 3: Follow on Reddit (Optional) -->
+                    <div class="mission-card optional" id="mission-reddit">
                         <h3>Optional Mission: Follow on Reddit</h3>
                         <p>Follow our Subreddit for a higher chance to be the champion!</p>
-                        <a href="https://www.reddit.com/r/SudxLabs/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Follow on Reddit</a>
+                        <div class="mission-actions">
+                            <a href="https://www.reddit.com/r/SudxLabs/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Follow on Reddit</a>
+                        </div>
+                        <button class="btn-confirm" data-mission="reddit">Confirm Completion</button>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="submission">
+        <section id="submission" style="display: none;">
             <div class="panel">
                 <h2>Submit Your Proof</h2>
                 <p class="section-text">
-                    After completing the missions, fill out the form below to register for the airdrop. Winners will be verified manually.
+                    Great! Now fill out the form below to register for the airdrop. Winners will be verified manually.
                 </p>
                 <form id="mission-form">
                     <div class="form-group">
-                        <label for="walletAddress">Your Polygon (MATIC) Wallet Address</label>
+                        <label for="walletAddress">Your Polygon (MATIC) Wallet Address <span class="required-star">*</span></label>
                         <input type="text" id="walletAddress" name="walletAddress" class="input-field" placeholder="0x..." required>
                     </div>
                     <div class="form-group">
-                        <label for="xUsername">Your X (Twitter) Username</label>
+                        <label for="xUsername">Your X (Twitter) Username <span class="required-star">*</span></label>
                         <input type="text" id="xUsername" name="xUsername" class="input-field" placeholder="@your_username" required>
                     </div>
                     <div class="form-group">
-                        <label for="telegramUsername">Your Telegram Username</label>
+                        <label for="telegramUsername">Your Telegram Username <span class="required-star">*</span></label>
                         <input type="text" id="telegramUsername" name="telegramUsername" class="input-field" placeholder="@your_username" required>
                     </div>
                     <div class="form-group">
@@ -104,7 +108,7 @@
                         <input type="text" id="redditUsername" name="redditUsername" class="input-field" placeholder="u/your_username">
                     </div>
                     <div class="cta-buttons">
-                        <button type="submit" class="btn">Submit for Airdrop</button>
+                        <button type="submit" id="submit-btn" class="btn" disabled>Submit for Airdrop</button>
                     </div>
                 </form>
                 <div id="form-status" class="status-message" style="display: none;"></div>
