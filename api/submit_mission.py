@@ -79,9 +79,10 @@ def handle_submission():
     try:
         with get_db_connection() as conn:
             # Step 1: Check if the wallet already exists
-            existing = conn.execute("SELECT 1 FROM submissions WHERE wallet_address = ?", (wallet_address,)).fetchone()
+            rs = conn.execute("SELECT 1 FROM submissions WHERE wallet_address = ?", (wallet_address,))
             
-            if existing:
+            # Correct way to check for existence with libsql-client
+            if len(rs.rows) > 0:
                 return jsonify({"message": "This wallet has already been submitted."}), 200
 
             # Step 2: If it doesn't exist, insert the new submission
