@@ -78,25 +78,21 @@ def handle_submission():
 
     try:
         with get_db_connection() as conn:
-            rs = conn.execute(
-                "INSERT OR IGNORE INTO submissions (wallet_address, x_username, telegram_username, reddit_username, email) VALUES (?, ?, ?, ?, ?)",
+            # Step 1: Check if the wallet already exists
+            existing = conn.execute("SELECT 1 FROM submissions WHERE wallet_address = ?", (wallet_address,)).fetchone()
+            
+            if existing:
+                return jsonify({"message": "This wallet has already been submitted."}), 200
+
+            # Step 2: If it doesn't exist, insert the new submission
+            conn.execute(
+                "INSERT INTO submissions (wallet_address, x_username, telegram_username, reddit_username, email) VALUES (?, ?, ?, ?, ?)",
                 (wallet_address, x_username, telegram_username, reddit_username, email)
             )
             
-            # Defensive check to ensure we have a valid result
-            if rs and hasattr(rs, 'rows_affected'):
-                if rs.rows_affected > 0:
-                    message = "Submission successful!"
-                else:
-                    message = "This wallet has already been submitted."
-            else:
-                # Fallback message if the result set is not as expected
-                message = "Submission status could not be determined, but the request was sent."
-
-            return jsonify({"message": message}), 200
+            return jsonify({"message": "Submission successful!"}), 200
             
     except Exception as e:
-        # Import traceback for detailed logging
         import traceback
         print(f"--- DETAILED SUBMISSION ERROR ---")
         print(f"Error object: {e}")
