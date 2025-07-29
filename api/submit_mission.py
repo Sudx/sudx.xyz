@@ -8,7 +8,14 @@ import libsql_client
 load_dotenv('.env.development.local')
 
 app = Flask(__name__)
-CORS(app)  # Enable CORS for all routes and origins
+# Configure CORS to allow requests from the admin dashboard and the main site
+CORS(app, resources={
+    r"/api/*": {
+        "origins": ["http://localhost:8000", "https://sudx.xyz"],
+        "methods": ["GET", "POST", "OPTIONS"],
+        "allow_headers": ["Content-Type", "Authorization"]
+    }
+})
 
 # --- Configuration ---
 db_url = os.getenv("TURSO_DATABASE_URL")
