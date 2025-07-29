@@ -12,6 +12,6 @@
     }
   ],
   "rewrites": [
-    { "source": "/api/(.*)", "destination": "/api/submit_mission" }
+    { "source": "/api/get_submissions", "destination": "/api/submit_mission" }
   ]
 }
