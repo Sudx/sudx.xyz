@@ -1,5 +1,4 @@
 {
-  "version": 2,
   "cleanUrls": true,
   "headers": [
     {
@@ -12,11 +11,7 @@
       ]
     }
   ],
-  "routes": [
-    { "src": "/sitemap.xml", "dest": "/sitemap.xml" },
-    { "src": "/robots.txt", "dest": "/robots.txt" }
-  ],
   "rewrites": [
-    { "source": "/api/get_submissions", "destination": "/api/submit_mission" }
+    { "source": "/api/(.*)", "destination": "/api/submit_mission" }
   ]
 }
