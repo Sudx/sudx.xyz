@@ -5,26 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SUDX | Donate & Fund</title>
     <meta name="description" content="Support the SUDX project by donating to the ecosystem or contributing to the liquidity pool. Your support empowers the future of open-source funding.">
-    <link rel="icon" href="assets/icon-final-monogram.svg" type="image/svg+xml">
-    <link rel="icon" type="image/png" href="assets/bitmap192-192.png" sizes="192x192">
-    <link rel="apple-touch-icon" href="assets/bitmap192-192.png">
+    
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/assets/principal.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/assets/bitmap192-192.png">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    
     <script defer src="/_vercel/speed-insights/script.js"></script>
     <script defer src="/_vercel/insights/script.js"></script>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17373220701">
-</script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17373220701"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17373220701');
+      gtag('config', 'G-FQGCH1X4MP');
+    </script>
 
-  gtag('config', 'AW-17373220701');
-  gtag('config', 'G-FQGCH1X4MP');
-</script>
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "SUDX",
+      "url": "https://sudx.xyz",
+      "logo": "https://sudx.xyz/assets/bitmap512-512.png",
+      "sameAs": [
+        "https://x.com/SudxOfficial",
+        "https://t.me/sudxcoin",
+        "https://github.com/Sudx",
+        "https://www.reddit.com/r/SudxLabs/"
+      ]
+    }
+    </script>
 </head>
 <body>
 
@@ -122,10 +141,10 @@
         </div>
     </footer>
     
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/5.7.2/ethers.umd.min.js"></script>
-    <script src="wallet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/5.7.2/ethers.umd.min.js" defer></script>
+    <script src="wallet.js" defer></script>
     <script src="donate.js" defer></script>
-    <script src="nav.js"></script>
+    <script src="nav.js" defer></script>
     <script src="tracking.js" defer></script>
 
 </body>
