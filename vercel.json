@@ -4,8 +4,13 @@
     { "src": "api/submit_mission.py", "use": "@vercel/python" }
   ],
   "routes": [
-    { "src": "/sitemap.xml", "dest": "/sitemap.xml" },
-    { "src": "/robots.txt", "dest": "/robots.txt" },
-    { "src": "/api/get_submissions", "dest": "/api/submit_mission.py" }
+    {
+      "src": "/api/get_submissions",
+      "dest": "/api/submit_mission.py"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/$1"
+    }
   ]
 }
