@@ -12,10 +12,6 @@
     }
   ],
   "rewrites": [
-    {
-      "source": "/((?!api/|admin/).*)",
-      "destination": "/:path"
-    },
     { "source": "/api/(.*)", "destination": "/api/submit_mission" }
   ]
 }
