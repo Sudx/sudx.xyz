@@ -49,6 +49,7 @@ def init_db():
                     x_username TEXT NOT NULL,
                     telegram_username TEXT NOT NULL,
                     reddit_username TEXT,
+                    email TEXT,
                     submission_timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
                 )
             """)
@@ -70,6 +71,7 @@ def handle_submission():
     x_username = data.get('xUsername')
     telegram_username = data.get('telegramUsername')
     reddit_username = data.get('redditUsername', '')
+    email = data.get('email', '') # Get email, default to empty string if not provided
 
     if not all([wallet_address, x_username, telegram_username]):
         return jsonify({"error": "Missing required fields"}), 400
@@ -77,8 +79,8 @@ def handle_submission():
     try:
         with get_db_connection() as conn:
             rs = conn.execute(
-                "INSERT OR IGNORE INTO submissions (wallet_address, x_username, telegram_username, reddit_username) VALUES (?, ?, ?, ?)",
-                (wallet_address, x_username, telegram_username, reddit_username)
+                "INSERT OR IGNORE INTO submissions (wallet_address, x_username, telegram_username, reddit_username, email) VALUES (?, ?, ?, ?, ?)",
+                (wallet_address, x_username, telegram_username, reddit_username, email)
             )
             if rs.rows_affected > 0:
                 message = "Submission successful!"
@@ -100,7 +102,7 @@ def get_submissions():
     # 2. Fetch Data
     try:
         with get_db_connection() as conn:
-            rs = conn.execute("SELECT id, wallet_address, x_username, telegram_username, reddit_username, submission_timestamp FROM submissions ORDER BY submission_timestamp DESC")
+            rs = conn.execute("SELECT id, wallet_address, x_username, telegram_username, reddit_username, email, submission_timestamp FROM submissions ORDER BY submission_timestamp DESC")
             # Convert ResultSet to a list of dictionaries
             submissions = [dict(zip(rs.columns, row)) for row in rs.rows]
             return jsonify(submissions), 200

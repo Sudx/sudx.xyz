@@ -149,6 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
             xUsername: document.getElementById('xUsername').value,
             telegramUsername: document.getElementById('telegramUsername').value,
             redditUsername: document.getElementById('redditUsername').value,
+            email: document.getElementById('email').value,
         };
 
         try {
