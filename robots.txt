@@ -1,3 +1,6 @@
+# Allow all web crawlers to access all content
 User-agent: *
-Allow: /
+Disallow:
+
+# Point crawlers to the sitemap
 Sitemap: https://sudx.xyz/sitemap.xml
