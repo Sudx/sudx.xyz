@@ -71,7 +71,7 @@ def handle_submission():
     x_username = data.get('xUsername')
     telegram_username = data.get('telegramUsername')
     reddit_username = data.get('redditUsername', '')
-    email = data.get('email', '') # Get email, default to empty string if not provided
+    email = data.get('email', '')
 
     if not all([wallet_address, x_username, telegram_username]):
         return jsonify({"error": "Missing required fields"}), 400
@@ -82,13 +82,26 @@ def handle_submission():
                 "INSERT OR IGNORE INTO submissions (wallet_address, x_username, telegram_username, reddit_username, email) VALUES (?, ?, ?, ?, ?)",
                 (wallet_address, x_username, telegram_username, reddit_username, email)
             )
-            if rs.rows_affected > 0:
-                message = "Submission successful!"
+            
+            # Defensive check to ensure we have a valid result
+            if rs and hasattr(rs, 'rows_affected'):
+                if rs.rows_affected > 0:
+                    message = "Submission successful!"
+                else:
+                    message = "This wallet has already been submitted."
             else:
-                message = "This wallet has already been submitted."
+                # Fallback message if the result set is not as expected
+                message = "Submission status could not be determined, but the request was sent."
+
             return jsonify({"message": message}), 200
+            
     except Exception as e:
-        print(f"Error saving submission: {e}")
+        # Import traceback for detailed logging
+        import traceback
+        print(f"--- DETAILED SUBMISSION ERROR ---")
+        print(f"Error object: {e}")
+        print(traceback.format_exc())
+        print(f"--- END OF ERROR ---")
         return jsonify({"error": "An internal server error occurred."}), 500
 
 @app.route('/api/get_submissions', methods=['GET'])
