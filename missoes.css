@@ -158,3 +158,28 @@
     color: #ff0000;
     border-color: #ff0000;
 }
+
+/* Styles for clicked action buttons */
+.mission-actions .btn.clicked {
+    background-color: #004d00; /* Dark Green */
+    color: #99ff99; /* Light Green */
+    border-color: #00cc00;
+    cursor: default;
+    pointer-events: none; /* Make the link un-clickable */
+}
+
+/* Style for the confirm button when it's disabled */
+.btn-confirm:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+    background-color: var(--bg-color);
+    color: var(--text-color-darker);
+    box-shadow: none;
+    border-color: var(--text-color-darker);
+}
+
+/* Style for action buttons after mission is fully confirmed */
+.mission-actions .btn.finalized {
+    opacity: 0.6;
+    background-color: #333;
+}
