@@ -1,0 +1,81 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="SUDX - Real-Time Market Analytics">
+    <div class="container">
+        <header class="container" style="text-align: center; padding-bottom: 40px;">
+            <h1>SUDX Market Analytics</h1>
+            <p class="slogan">Real-time on-chain data from the Polygon network.</p>
+        </header>
+
+        <main>
+            <div class="panel">
+                <!-- Seção de Visão Geral do Mercado -->
+                <section id="market-overview">
+                    <h2>Market Overview (Aggregated)</h2>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <h3>Price (USD)</h3>
+                            <p id="market-price">Loading...</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Total Liquidity</h3>
+                            <p id="market-liquidity">Loading...</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Volume (24h)</h3>
+                            <p id="market-volume">Loading...</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Market Cap</h3>
+                            <p id="market-cap">Loading...</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Seção de Pools Ativos -->
+                <section id="active-pools">
+                    <h2>Active Liquidity Pools</h2>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Pair</th>
+                                    <th>Exchange (DEX)</th>
+                                    <th>Liquidity</th>
+                                    <th>Volume (24h)</th>
+                                    <th>Price</th>
+                                </tr>
+                            </thead>
+                            <tbody id="pools-table-body">
+                                <tr><td colspan="5" style="text-align: center;">Loading pools...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Seção de Feed de Transações (Swaps) -->
+                <section id="transaction-feed">
+                    <h2>Recent Swaps Feed</h2>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Value (USD)</th>
+                                    <th>Tokens</th>
+                                    <th>Exchange</th>
+                                    <th>Time</th>
+                                </tr>
+                            </thead>
+                            <tbody id="swaps-table-body">
+                                <tr><td colspan="5" style="text-align: center;">Waiting for swaps...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+    <script src="/src/scripts/dashboard.js" type="module"></script>
+</BaseLayout>

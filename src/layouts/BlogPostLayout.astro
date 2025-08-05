@@ -1,0 +1,42 @@
+---
+// /src/layouts/BlogPostLayout.astro
+import BaseLayout from './BaseLayout.astro';
+const { frontmatter } = Astro.props;
+---
+<BaseLayout title={frontmatter.title} description={frontmatter.description}>
+    <style>
+        /* Specific styles for blog post content */
+        .blog-content {
+            text-align: left;
+            line-height: 1.8;
+        }
+        .blog-content h1, .blog-content h2, .blog-content h3 {
+            text-align: left;
+            border-bottom: 1px solid var(--primary-glow-color);
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+        .blog-content a {
+            color: var(--secondary-glow-color);
+        }
+        .blog-content code {
+            font-size: 0.9rem;
+        }
+        .blog-content blockquote {
+            border-left: 3px solid var(--secondary-glow-color);
+            padding-left: 20px;
+            margin-left: 0;
+            font-style: italic;
+            color: var(--text-color-darker);
+        }
+    </style>
+    <div class="container">
+        <article class="container">
+            <div class="panel">
+                <div class="blog-content">
+                    <slot />
+                </div>
+            </div>
+        </article>
+    </div>
+</BaseLayout>

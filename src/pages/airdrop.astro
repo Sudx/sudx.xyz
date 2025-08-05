@@ -1,0 +1,103 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/airdrop.css';
+---
+<BaseLayout title="SUDX Airdrop">
+    <header class="container">
+        <h1>SUDX Airdrop<span class="cursor"></span></h1>
+        <p class="slogan">Complete tasks, join the community, and earn SUDX.</p>
+    </header>
+
+    <div class="container">
+        <section id="airdrop-rules">
+            <div class="panel">
+                <h2>Airdrop Rules & Distribution</h2>
+                <p>Welcome, agent. Here is the plan for the <strong>10,000,000 SUDX</strong> airdrop.</p>
+                <ul>
+                    <li><strong>Total Pool:</strong> 10,000,000 SUDX tokens.</li>
+                    <li><strong>Snapshot Date:</strong> Submissions are valid until <strong>September 5, 2025, 00:00 UTC</strong>.</li>
+                    <li><strong>Base Distribution Pool:</strong> 9,900,000 SUDX will be distributed equally among all participants who are manually verified after completing the required missions.</li>
+                    <li><strong>Champion's Prize:</strong> 100,000 SUDX will be awarded to one lucky champion.</li>
+                    <li><strong>Champion Selection:</strong> The champion will be randomly selected from the pool of verified participants who have successfully completed all three missions (X, Telegram, and Reddit).</li>
+                </ul>
+                <p>Complete the missions below to secure your allocation.</p>
+            </div>
+        </section>
+
+        <section id="missions">
+            <div class="panel">
+                <h2>Complete these missions to unlock the submission form.</h2>
+                
+                <div class="missions-grid">
+                    <!-- Mission 1: X (Twitter) - Highlighted -->
+                    <div class="mission-card highlighted" id="mission-x">
+                        <h3>Mission 1: Engage on X (Required)</h3>
+                        <p>Follow our page, then like and share the official airdrop post.</p>
+                        <div class="mission-actions">
+                            <a href="https://x.com/SudxOfficial" target="_blank" rel="noopener noreferrer" class="btn">1. Follow</a>
+                            <a href="https://x.com/SudxOfficial/status/1950680957171724393" target="_blank" rel="noopener noreferrer" class="btn">2. Like Post</a>
+                            <a href="https://x.com/intent/retweet?tweet_id=1950680957171724393" target="_blank" rel="noopener noreferrer" class="btn">3. Share</a>
+                        </div>
+                        <button class="btn-confirm" data-mission="x">Confirm Completion</button>
+                    </div>
+
+                    <!-- Mission 2: Join Telegram -->
+                    <div class="mission-card" id="mission-telegram">
+                        <h3>Mission 2: Join our Telegram (Required)</h3>
+                        <p>Become a part of our main community channel.</p>
+                        <div class="mission-actions">
+                            <a href="https://t.me/sudxcoin" target="_blank" rel="noopener noreferrer" class="btn">Join Telegram</a>
+                        </div>
+                        <button class="btn-confirm" data-mission="telegram">Confirm Completion</button>
+                    </div>
+
+                    <!-- Mission 3: Follow on Reddit (Optional) -->
+                    <div class="mission-card optional" id="mission-reddit">
+                        <h3>Optional Mission: Follow on Reddit</h3>
+                        <p>Follow our Subreddit for a higher chance to be the champion!</p>
+                        <div class="mission-actions">
+                            <a href="https://www.reddit.com/r/SudxLabs/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Follow on Reddit</a>
+                        </div>
+                        <button class="btn-confirm" data-mission="reddit">Confirm Completion</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="submission" style="display: none;">
+            <div class="panel">
+                <h2>Submit Your Proof</h2>
+                <p class="section-text">
+                    Great! Now fill out the form below to register for the airdrop. Winners will be verified manually.
+                </p>
+                <form id="mission-form">
+                    <div class="form-group">
+                        <label for="walletAddress">Your Polygon (MATIC) Wallet Address <span class="required-star">*</span></label>
+                        <input type="text" id="walletAddress" name="walletAddress" class="input-field" placeholder="0x..." required>
+                    </div>
+                    <div class="form-group">
+                        <label for="xUsername">Your X (Twitter) Username <span class="required-star">*</span></label>
+                        <input type="text" id="xUsername" name="xUsername" class="input-field" placeholder="@your_username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="telegramUsername">Your Telegram Username <span class="required-star">*</span></label>
+                        <input type="text" id="telegramUsername" name="telegramUsername" class="input-field" placeholder="@your_username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="redditUsername">Your Reddit Username (Optional)</label>
+                        <input type="text" id="redditUsername" name="redditUsername" class="input-field" placeholder="u/your_username">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Your Email (Optional)</label>
+                        <input type="email" id="email" name="email" class="input-field" placeholder="your.email@example.com">
+                    </div>
+                    <div class="cta-buttons">
+                        <button type="submit" id="submit-btn" class="btn" disabled>Submit for Airdrop</button>
+                    </div>
+                </form>
+                <div id="form-status" class="status-message" style="display: none;"></div>
+            </div>
+        </section>
+    </div>
+    <script src="/src/scripts/airdrop.js"></script>
+</BaseLayout>

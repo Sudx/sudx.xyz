@@ -1,0 +1,39 @@
+---
+// No layout needed for this special page
+import '../styles/global.css';
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 Not Found | SUDX</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+        .panel {
+            max-width: 600px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="panel">
+            <h1>404<span class="cursor"></span></h1>
+            <p class="slogan">Page Not Found</p>
+            <p class="section-text">The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.</p>
+            <div class="cta-buttons" style="margin-top: 30px;">
+                <a href="/" class="btn">Go to Homepage</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

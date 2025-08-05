@@ -1,0 +1,73 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="SUDX | FAQ">
+    <header class="container">
+        <h1>FAQ<span class="cursor"></span></h1>
+        <p class="slogan">Frequently Asked Questions.</p>
+    </header>
+
+    <div class="container">
+        <section id="faq-list">
+            <div class="panel">
+                <!-- FAQ Item 1 -->
+                <div class="faq-item">
+                    <h3>What is SUDX?</h3>
+                    <p>SUDX is a decentralized protocol and cryptocurrency on the Polygon network, designed to create a transparent and sustainable funding ecosystem for open-source software. It allows developers and projects to receive direct donations and empowers the community to fund new tools and initiatives through a DAO (Decentralized Autonomous Organization).</p>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="faq-item">
+                    <h3>Was there an ICO, IEO, or any form of public/private sale?</h3>
+                    <p><strong>No.</strong> SUDX was launched as a <strong>Fair Launch</strong> project. This means there was no Initial Coin Offering (ICO), Initial Exchange Offering (IEO), or any private/seed sale rounds. The entire initial token supply was minted and is allocated according to the tokenomics defined in our Whitepaper, with the majority reserved for the ecosystem, liquidity, and community-governed treasury. This approach ensures that everyone has an equal opportunity to acquire the token on the open market from day one.</p>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="faq-item">
+                    <h3>How can I get SUDX?</h3>
+                    <p>You can acquire SUDX by swapping MATIC or other tokens on a decentralized exchange (DEX) on the Polygon network, such as QuickSwap. The official contract address is <code>0xc56F971934961267586e8283C06018167F0D0E4C</code>. Always verify the contract address before trading.</p>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="faq-item">
+                    <h3>Why was Polygon chosen as the blockchain?</h3>
+                    <p>Polygon was chosen for its low transaction fees, high scalability, and robust DeFi ecosystem. These features are crucial for a project like SUDX, which aims to facilitate a high volume of micro-donations and governance interactions without imposing high costs on the community.</p>
+                </div>
+
+                <!-- FAQ Item 5 -->
+                <div class="faq-item">
+                    <h3>How is the project's treasury managed?</h3>
+                    <p>The treasury is managed in a decentralized manner through the SUDX DAO, which runs on the Aragon platform. All decisions regarding the use of funds—such as financing projects, paying for marketing, or funding bounties—are made through community proposals and on-chain voting. This ensures full transparency and community control.</p>
+                </div>
+
+                <!-- FAQ Item 6 -->
+                <div class="faq-item">
+                    <h3>How do I know the team won't sell their tokens and abandon the project?</h3>
+                    <p>To ensure long-term commitment and protect the community, 100% of the team's allocated tokens (15% of total supply) are locked in a public, verifiable vesting contract provided by UNCX Network. The tokens are subject to a 3-year vesting schedule (1-year cliff, then 2 years of linear release). This means the team cannot sell their tokens for at least a year and will only gain access to them gradually over time, aligning their interests with the project's long-term success. You can view the proof of vesting <a href="https://app.uncx.network/lockers/token/chain/137/address/0xc56f971934961267586e8283c06018167f0d0e4c" target="_blank" rel="noopener noreferrer">here</a>.</p>
+                </div>
+
+                <!-- FAQ Item 7 (NEW) -->
+                <div class="faq-item">
+                    <h3>On-chain data shows high token concentration. Why is this and is it safe?</h3>
+                    <p>
+                        This is an excellent and important question. The current distribution is a <strong>deliberate, temporary, and transparent strategy</strong> designed to protect the project and its community for the long term. Here’s a breakdown of the rationale:
+                    </p>
+                    <ul class="faq-list">
+                        <li>
+                            <strong>Security First:</strong> Placing the entire 1.26 billion SUDX Ecosystem Fund into a "hot" DAO contract from day one would be extremely risky. A single smart contract exploit could drain the project's entire lifeblood. Instead, we follow security best practices by holding these funds in a secure, community-owned Safe (a multi-signature wallet). They will be transferred to the DAO's operational treasury in smaller amounts as approved by community governance.
+                        </li>
+                        <li>
+                            <strong>Strategic Liquidity:</strong> As a self-funded project, creating a multi-million dollar liquidity pool instantly was not feasible. We launched with a smaller, seed liquidity pool to establish a stable market. The majority of the tokens allocated for liquidity are held in a dedicated, public wallet, ready to be deployed to deepen market liquidity as the project grows and as directed by the DAO. This is a sustainable, long-term approach.
+                        </li>
+                        <li>
+                            <strong>Locked & Vested Funds:</strong> All team tokens (15%) are verifiably locked in a 3-year vesting contract. They are inaccessible, ensuring the team is committed to the project's long-term success.
+                        </li>
+                    </ul>
+                    <p>
+                        In short, what looks like centralization is actually a carefully planned security and growth strategy. Our commitment is to <strong>progressive decentralization</strong>, where control of these funds is transferred to the DAO as it matures.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </div>
+</BaseLayout>

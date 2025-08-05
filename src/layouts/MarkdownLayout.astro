@@ -1,0 +1,47 @@
+---
+// /src/layouts/MarkdownLayout.astro
+import BaseLayout from './BaseLayout.astro';
+const { frontmatter } = Astro.props;
+---
+<BaseLayout title={frontmatter.title}>
+    <style>
+        /* Estilos específicos para o conteúdo do whitepaper */
+        #whitepaper-content {
+            text-align: left;
+        }
+        #whitepaper-content h1, #whitepaper-content h2, #whitepaper-content h3 {
+            text-align: left;
+            border-bottom: 1px solid var(--primary-glow-color);
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+        #whitepaper-content a {
+            color: var(--secondary-glow-color);
+        }
+        #whitepaper-content code {
+            font-size: 0.9rem;
+        }
+        #whitepaper-content pre {
+            background-color: #000;
+            border: 1px solid var(--primary-glow-color);
+            padding: 15px;
+            overflow-x: auto;
+        }
+    </style>
+    <div class="container">
+        <header class="container" style="text-align: center; padding-bottom: 40px;">
+            <h1>{frontmatter.title}</h1>
+            <div class="cta-buttons">
+                <a href="/" class="btn btn-secondary">Back to Home</a>
+            </div>
+        </header>
+
+        <section id="whitepaper-container">
+            <div class="panel">
+                <div id="whitepaper-content">
+                    <slot />
+                </div>
+            </div>
+        </section>
+    </div>
+</BaseLayout>

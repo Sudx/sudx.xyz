@@ -1,0 +1,59 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+<BaseLayout title="SUDX Blog | Open-Source Funding, Web3, and Crypto Insights">
+    <style>
+        .blog-post-entry {
+            display: block;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid var(--primary-glow-color);
+            text-decoration: none;
+            color: var(--text-color);
+            transition: all 0.3s ease;
+        }
+        .blog-post-entry:hover {
+            background-color: rgba(160, 32, 240, 0.1);
+            transform: translateY(-5px);
+        }
+        .blog-post-entry h3 {
+            color: var(--secondary-glow-color);
+            text-shadow: var(--secondary-glow);
+            margin-top: 0;
+        }
+        .blog-post-entry p {
+            color: var(--text-color-darker);
+        }
+        .post-date {
+            font-size: 0.9rem;
+            color: var(--primary-glow-color);
+            margin-bottom: 10px;
+        }
+    </style>
+
+    <header class="container">
+        <h1>SUDX Blog<span class="cursor"></span></h1>
+        <p class="slogan">Insights on the future of open-source and Web3.</p>
+    </header>
+
+    <div class="container">
+        <main id="blog-posts-container">
+            <div class="panel">
+                <h2>Latest Articles</h2>
+                <div id="posts-list">
+                    <a href="/blog/sudx-joins-dorahacks-and-gitcoin" class="blog-post-entry">
+                        <h3>SUDX Expands its Mission: Now on DoraHacks and Gitcoin!</h3>
+                        <p class="post-date">August 2, 2025</p>
+                        <p>Announcing our project's presence on two key platforms for Web3 builders and public goods funding.</p>
+                    </a>
+                    <a href="/blog/3-ways-to-fund-open-source-with-crypto" class="blog-post-entry">
+                        <h3>3 Innovative Ways to Fund Open-Source Projects with Crypto</h3>
+                        <p class="post-date">July 27, 2025</p>
+                        <p>Discover how blockchain, DAOs, and on-chain reputation are creating a sustainable funding ecosystem for open-source software.</p>
+                    </a>
+                    <!-- More posts will be added here -->
+                </div>
+            </div>
+        </main>
+    </div>
+</BaseLayout>

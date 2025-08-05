@@ -1,0 +1,56 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="SUDX | Donate & Fund">
+    <header class="container">
+        <h1>Support SUDX<span class="cursor"></span></h1>
+        <p class="slogan">Choose how you want to empower the ecosystem.</p>
+    </header>
+
+    <div class="container">
+        <div id="wallet-message" class="wallet-status-message" style="display: block;">
+            Please connect your wallet to enable funding options.
+        </div>
+
+        <div class="donation-container">
+            <!-- Option 1: Donate to the Project -->
+            <div class="panel">
+                <h2>1. Donate to the Ecosystem</h2>
+                <p class="section-text">
+                    Donate SUDX directly to the DAO Treasury. These funds support development, marketing, and community initiatives, governed by token holders.
+                </p>
+                <div class="form-group">
+                    <label for="donationAmount">Amount to Donate (SUDX)</label>
+                    <input type="number" id="donationAmount" class="input-field" placeholder="e.g., 1000">
+                </div>
+                <div class="cta-buttons">
+                    <button id="donateToSUDXBtn" class="btn">Donate SUDX</button>
+                </div>
+                <div id="donation-status" class="status-message" style="display: none;"></div>
+                <p class="address-info">
+                    DAO Treasury: <code>0xA5dEa0A7E9c47d52e735c1d4129Cc02a54966E21</code>
+                </p>
+            </div>
+
+            <!-- Option 2: Fund Liquidity -->
+            <div class="panel">
+                <h2>2. Fund the Liquidity Pool</h2>
+                <p class="section-text">
+                    Donate USDC to the Liquidity Fund. This strengthens the SUDX/USDC pool, reducing price volatility, and creating a more stable market for everyone.
+                </p>
+                <div class="form-group">
+                    <label for="usdcAmount">Amount to Fund (USDC)</label>
+                    <input type="number" id="usdcAmount" class="input-field" placeholder="e.g., 100">
+                </div>
+                <div class="cta-buttons">
+                    <button id="donateUSDCBtn" class="btn">Fund with USDC</button>
+                </div>
+                <div id="funding-status" class="status-message" style="display: none;"></div>
+                <p class="address-info">
+                    Liquidity Fund: <code>0xffC666cD50a6250CDc83E44C5f6e57Ec6f6074b4</code>
+                </p>
+            </div>
+        </div>
+    </div>
+    <script src="/src/scripts/donate.js"></script>
+</BaseLayout>
