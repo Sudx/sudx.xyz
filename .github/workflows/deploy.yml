@@ -17,10 +17,26 @@ jobs:
     steps:
       - name: Checkout your repository using git
         uses: actions/checkout@v4
-      - name: Install, build, and upload your site
-        uses: withastro/action@v2
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
-          path: ./chrono-website
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: chrono-website/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+        working-directory: ./chrono-website
+
+      - name: Build with Astro
+        run: npm run build
+        working-directory: ./chrono-website
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./chrono-website/dist
 
   deploy:
     needs: build
@@ -29,6 +45,6 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Deploy your site to GitHub Pages
+      - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
