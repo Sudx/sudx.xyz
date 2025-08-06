@@ -7,6 +7,7 @@ import vercel from '@astrojs/vercel';
 export default defineConfig({
   site: 'https://sudx.xyz',
   output: 'server',
+  trailingSlash: 'never',
   adapter: vercel({
     functionPerRoute: true,
   }),
