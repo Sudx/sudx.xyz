@@ -1,21 +1,19 @@
 {
-  "headers": [
+  "routes": [
     {
-      "source": "/api/get_submissions",
-      "headers": [
-        {
-          "key": "Access-Control-Allow-Origin",
-          "value": "*"
-        },
-        {
-          "key": "Access-Control-Allow-Methods",
-          "value": "GET,OPTIONS"
-        },
-        {
-          "key": "Access-Control-Allow-Headers",
-          "value": "Content-Type, Authorization"
-        }
-      ]
+      "src": "/api/get_submissions",
+      "methods": ["OPTIONS"],
+      "headers": {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET,OPTIONS,PATCH,DELETE,POST,PUT",
+        "Access-Control-Allow-Headers": "Content-Type, Authorization"
+      },
+      "status": 204
+    },
+    {
+      "src": "/api/get_submissions",
+      "methods": ["GET"],
+      "dest": "/api/get_submissions"
     }
   ]
 }
