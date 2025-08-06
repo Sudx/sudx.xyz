@@ -2,36 +2,65 @@
 import type { APIRoute } from 'astro';
 import { createClient } from '@libsql/client';
 
-// A API não deve ser pré-renderizada, pois precisa ser dinâmica
 export const prerender = false;
 
-// Configuração do cliente do banco de dados
-const db = createClient({
-  url: import.meta.env.TURSO_DATABASE_URL as string,
-  authToken: import.meta.env.TURSO_AUTH_TOKEN as string,
-});
-
-// Chave secreta do admin para proteger o endpoint
+// Verificação explícita das variáveis de ambiente
+const tursoUrl = import.meta.env.TURSO_DATABASE_URL;
+const tursoAuthToken = import.meta.env.TURSO_AUTH_TOKEN;
 const secretKey = import.meta.env.ADMIN_API_KEY;
 
+const corsHeaders = {
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Methods": "GET, OPTIONS",
+  "Access-Control-Allow-Headers": "Content-Type, Authorization"
+};
+
+// Função de resposta de erro centralizada
+function createErrorResponse(message: string, status = 500) {
+  console.error(message);
+  return new Response(JSON.stringify({ error: message }), { 
+    status, 
+    headers: corsHeaders 
+  });
+}
+
+if (!tursoUrl) {
+  console.error("Variável de ambiente TURSO_DATABASE_URL não está configurada.");
+}
+if (!tursoAuthToken) {
+  console.error("Variável de ambiente TURSO_AUTH_TOKEN não está configurada.");
+}
+if (!secretKey) {
+  console.error("Variável de ambiente ADMIN_API_KEY não está configurada.");
+}
+
+const db = createClient({
+  url: tursoUrl as string,
+  authToken: tursoAuthToken as string,
+});
+
+export const OPTIONS: APIRoute = async () => {
+  return new Response(null, {
+    status: 204,
+    headers: corsHeaders
+  });
+};
+
 export const GET: APIRoute = async ({ request }) => {
-  // 1. Verificar a chave de API
-  const authHeader = request.headers.get('Authorization');
-  
-  if (!secretKey) {
-    console.error("ADMIN_API_KEY não está configurada no ambiente.");
-    return new Response(JSON.stringify({ error: "Configuração de segurança do servidor incompleta." }), { status: 500 });
+  // Verificar variáveis de ambiente em cada requisição para garantir que o deploy mais recente as tenha
+  if (!tursoUrl || !tursoAuthToken || !secretKey) {
+    return createErrorResponse("Configuração de ambiente do servidor incompleta. Uma ou mais variáveis de ambiente essenciais não foram carregadas.");
   }
+
+  const authHeader = request.headers.get('Authorization');
 
   if (!authHeader || authHeader !== `Bearer ${secretKey}`) {
-    return new Response(JSON.stringify({ error: 'Acesso não autorizado.' }), { status: 401 });
+    return createErrorResponse('Acesso não autorizado.', 401);
   }
 
-  // 2. Se a chave for válida, buscar os dados
   try {
     const result = await db.execute("SELECT * FROM submissions ORDER BY submission_timestamp DESC");
     
-    // O Turso retorna os dados em um formato específico, vamos extraí-los
     const submissions = result.rows.map(row => {
         const submission: { [key: string]: any } = {};
         result.columns.forEach((col, index) => {
@@ -49,12 +78,6 @@ export const GET: APIRoute = async ({ request }) => {
     });
 
   } catch (e) {
-    console.error("--- ERRO AO BUSCAR SUBMISSIONS ---");
-    console.error(e);
-    console.error("--- FIM DO ERRO ---");
-    return new Response(JSON.stringify({ error: "Erro interno ao buscar dados do banco." }), { 
-      status: 500,
-      headers: corsHeaders
-    });
+    return createErrorResponse(`Erro interno ao buscar dados do banco: ${e.message}`);
   }
 };
