@@ -14,17 +14,36 @@ const db = createClient({
 // Chave secreta do admin para proteger o endpoint
 const secretKey = import.meta.env.ADMIN_API_KEY;
 
+const corsHeaders = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Methods': 'GET, OPTIONS',
+  'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+};
+
+export const OPTIONS: APIRoute = async () => {
+  return new Response(null, {
+    status: 204,
+    headers: corsHeaders,
+  });
+};
+
 export const GET: APIRoute = async ({ request }) => {
   // 1. Verificar a chave de API
   const authHeader = request.headers.get('Authorization');
   
   if (!secretKey) {
     console.error("ADMIN_API_KEY não está configurada no ambiente.");
-    return new Response(JSON.stringify({ error: "Configuração de segurança do servidor incompleta." }), { status: 500 });
+    return new Response(JSON.stringify({ error: "Configuração de segurança do servidor incompleta." }), { 
+      status: 500,
+      headers: corsHeaders 
+    });
   }
 
   if (!authHeader || authHeader !== `Bearer ${secretKey}`) {
-    return new Response(JSON.stringify({ error: 'Acesso não autorizado.' }), { status: 401 });
+    return new Response(JSON.stringify({ error: 'Acesso não autorizado.' }), { 
+      status: 401,
+      headers: corsHeaders
+    });
   }
 
   // 2. Se a chave for válida, buscar os dados
@@ -43,6 +62,7 @@ export const GET: APIRoute = async ({ request }) => {
     return new Response(JSON.stringify(submissions), {
       status: 200,
       headers: {
+        ...corsHeaders,
         'Content-Type': 'application/json'
       }
     });
@@ -51,6 +71,9 @@ export const GET: APIRoute = async ({ request }) => {
     console.error("--- ERRO AO BUSCAR SUBMISSIONS ---");
     console.error(e);
     console.error("--- FIM DO ERRO ---");
-    return new Response(JSON.stringify({ error: "Erro interno ao buscar dados do banco." }), { status: 500 });
+    return new Response(JSON.stringify({ error: "Erro interno ao buscar dados do banco." }), { 
+      status: 500,
+      headers: corsHeaders
+    });
   }
 };
