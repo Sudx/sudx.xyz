@@ -7,6 +7,8 @@ import vercel from '@astrojs/vercel';
 export default defineConfig({
   site: 'https://sudx.xyz',
   output: 'server',
-  adapter: vercel(),
+  adapter: vercel({
+    functionPerRoute: true,
+  }),
   integrations: [sitemap()],
 });
